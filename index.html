@@ -3,143 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>María Phia & Javier - Nuestra Boda</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>María Phia & Javier - Próximamente</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #d4a574;
+            --secondary-color: #f5e6d3;
+            --text-dark: #654321;
+            --text-light: #8b7355;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5e6d3 50%, #fdfbf7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Decoraciones florales animadas */
+        .flower-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .flower-1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+            font-size: 60px;
+        }
+
+        .flower-2 {
+            top: 15%;
+            right: 5%;
+            animation-delay: 1s;
+            font-size: 50px;
+        }
+
+        .flower-3 {
+            bottom: 15%;
+            left: 10%;
+            animation-delay: 2s;
+            font-size: 55px;
+        }
+
+        .flower-4 {
+            bottom: 10%;
+            right: 8%;
+            animation-delay: 1.5s;
+            font-size: 65px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .carriage {
+            font-size: 100px;
+            margin-bottom: 30px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .and {
+            display: block;
+            font-size: 2rem;
+            margin: 10px 0 20px 0;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .message {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .emoji-hearts {
+            font-size: 2rem;
+            margin: 20px 0;
+            letter-spacing: 10px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .coming-features {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(245, 230, 211, 0.5) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .features-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .feature-list li:before {
+            content: "✓ ";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .loading-bar {
+            margin-top: 40px;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #c49563);
+            border-radius: 10px;
+            animation: loading 2s ease-in-out infinite;
+            width: 70%;
+        }
+
+        @keyframes loading {
+            0%, 100% {
+                width: 30%;
+            }
+            50% {
+                width: 80%;
+            }
+        }
+
+        .contact-info {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding-top: 30px;
+            border-top: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .content {
+                padding: 40px 25px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .message {
+                font-size: 1.4rem;
+            }
+
+            .flower-decoration {
+                width: 60px;
+                height: 60px;
+                font-size: 45px !important;
+            }
+
+            .carriage {
+                font-size: 80px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Sección de Portada -->
-    <section class="hero">
-        <div class="floral-decoration top-left"></div>
-        <div class="floral-decoration top-right"></div>
-        <div class="hero-content">
-            <h1 class="names">María Phia<span class="ampersand">y</span>Javier</h1>
-            <div class="floral-decoration bottom"></div>
-        </div>
-    </section>
+    <!-- Decoraciones florales -->
+    <div class="flower-decoration flower-1">🌸</div>
+    <div class="flower-decoration flower-2">🌼</div>
+    <div class="flower-decoration flower-3">🌺</div>
+    <div class="flower-decoration flower-4">🌻</div>
 
-    <!-- Sección de Historia -->
-    <section class="story">
-        <div class="story-content">
-            <p class="story-text">
-                Hicimos un match increíble,<br>
-                y nos elegimos sin conocernos.<br>
-                Hoy, después de muchos<br>
-                viajes, risas y momentos<br>
-                juntos, hemos decidido<br>
-                compartir nuestras vidas.
+    <div class="container">
+        <div class="content">
+            <span class="carriage">🎃</span>
+
+            <h1>
+                María Phia
+                <span class="and">y</span>
+                Javier
+            </h1>
+
+            <p class="subtitle">
+                Nuestro viaje especial está en camino...
             </p>
-        </div>
-    </section>
 
-    <!-- Sección de Scroll con Calabaza -->
-    <section class="timeline-section">
-        <svg class="timeline-path" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <path id="curvePath" d="M 50 100 Q 300 200, 50 400 T 50 700 Q 300 800, 50 1100" 
-                  stroke="#d4a574" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
-        </svg>
-        
-        <div class="carriage-container">
-            <img src="images/carriage.png" alt="Carriage" class="carriage">
-        </div>
-
-        <!-- Evento 1: Daimiel -->
-        <div class="event-card event-1" data-event="daimiel">
-            <div class="event-image">
-                <img src="images/daimiel.png" alt="Daimiel - España">
+            <div class="message">
+                Estamos trabajando en ello ✨
             </div>
-            <div class="event-info">
-                <h3 class="event-location">Daimiel - España</h3>
-                <p class="event-date">4 de julio de 2026</p>
-                <p class="blessing">Con la bendición de<br>nuestros padres</p>
-                <p class="parents">
-                    María Isabel<br>
-                    Vicente Javier<br><br>
-                    Rosa Elena<br>
-                    Marcos Segundo
-                </p>
+
+            <div class="emoji-hearts">💕 💕 💕</div>
+
+            <div class="coming-features">
+                <p class="features-title">Pronto podrás:</p>
+                <ul class="feature-list">
+                    <li>Confirmar tu asistencia</li>
+                    <li>Conocer los detalles de ambas celebraciones</li>
+                    <li>Disfrutar de nuestro viaje virtual</li>
+                    <li>Compartir tus mejores deseos</li>
+                </ul>
             </div>
-        </div>
 
-        <!-- Evento 2: Arequipa -->
-        <div class="event-card event-2" data-event="arequipa">
-            <div class="event-image">
-                <img src="images/arequipa.png" alt="Arequipa - Perú">
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
             </div>
-            <div class="event-info">
-                <h3 class="event-location">Arequipa - Perú</h3>
-                <p class="event-date">19 de Diciembre 2026</p>
-                <p class="blessing">Con la bendición de<br>nuestros padres</p>
-                <p class="parents">
-                    María Isabel<br>
-                    Vicente Javier<br><br>
-                    Rosa Elena<br>
-                    Marcos Segundo
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Modal del Formulario -->
-    <div id="formModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalTitle">Confirma tu Asistencia</h2>
-            <p id="modalSubtitle"></p>
-            
-            <form id="rsvpForm">
-                <input type="hidden" id="eventLocation" name="eventLocation">
-                
-                <div class="form-group">
-                    <label for="nombre">Nombre Completo *</label>
-                    <input type="text" id="nombre" name="nombre" required>
+            <div class="contact-info">
+                <p><strong>¡Vuelve pronto para descubrir nuestra web!</strong></p>
+                <p>Daimiel, España - 4 de julio de 2026</p>
+                <p>Arequipa, Perú - 19 de Diciembre 2026</p>
+                <div class="social-links">
+                    <a href="mailto:contact@example.com" title="Email">📧</a>
+                    <a href="#" title="Whatsapp">💬</a>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono">
-                </div>
-
-                <div class="form-group">
-                    <label for="asistencia">¿Asistirás? *</label>
-                    <select id="asistencia" name="asistencia" required>
-                        <option value="">Selecciona una opción</option>
-                        <option value="si">Sí, asistiré</option>
-                        <option value="no">No podré asistir</option>
-                    </select>
-                </div>
-
-                <div class="form-group" id="acompanantesGroup" style="display: none;">
-                    <label for="acompanantes">Número de acompañantes</label>
-                    <input type="number" id="acompanantes" name="acompanantes" min="0" max="5" value="0">
-                </div>
-
-                <div class="form-group">
-                    <label for="restricciones">Restricciones alimentarias</label>
-                    <textarea id="restricciones" name="restricciones" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="mensaje">Mensaje para los novios</label>
-                    <textarea id="mensaje" name="mensaje" rows="3"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Enviar Confirmación</button>
-            </form>
-
-            <div id="successMessage" class="success-message" style="display: none;">
-                <p>¡Gracias por confirmar tu asistencia! 💕</p>
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
