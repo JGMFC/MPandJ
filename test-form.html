@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #ccc;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de Conexión - Formulario Boda</h1>
+    
+    <p><strong>ENDPOINT URL:</strong><br>
+    <code id="endpoint-url"></code></p>
+    
+    <p><strong>SHEET ID:</strong><br>
+    <code>1YiDqTnu_Ctn3KR-XMvwZmp5SSRs1_C6fkC8UEQkb6oc</code></p>
+    
+    <hr>
+    
+    <form id="test-form">
+        <label>Nombre Completo:</label>
+        <input type="text" id="nombre" value="Test Usuario Prueba" required>
+        
+        <label>Teléfono:</label>
+        <input type="tel" id="telefono" value="666777888" required>
+        
+        <label>Alergias (opcional):</label>
+        <input type="text" id="alergias" value="Ninguna">
+        
+        <button type="submit" id="submit-btn">Enviar Prueba</button>
+    </form>
+    
+    <div id="resultado"></div>
+    
+    <hr>
+    
+    <h3>📋 Instrucciones:</h3>
+    <ol>
+        <li><strong>Verifica que el ENDPOINT URL de arriba coincida con el de tu Apps Script</strong></li>
+        <li>Abre la <strong>consola del navegador</strong> (F12)</li>
+        <li>Haz clic en "Enviar Prueba"</li>
+        <li>Revisa los mensajes en la consola y aquí abajo</li>
+        <li>Ve a tu Google Sheet y verifica si se creó una fila nueva</li>
+    </ol>
+    
+    <h3>✅ Checklist:</h3>
+    <ul>
+        <li>¿Copiaste el código de Code.gs al Apps Script?</li>
+        <li>¿Actualizaste el SHEET_ID en Apps Script?</li>
+        <li>¿Hiciste "Nueva implementación" como Aplicación Web?</li>
+        <li>¿El acceso está en "Cualquier persona"?</li>
+        <li>¿La URL termina en /exec (no /dev)?</li>
+    </ul>
+
+    <script>
+        const ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbzfe9S4h1-mqTtU7Zmdw13lLh0E0srVB0e9HS_LiHfuz2CYGmq6EwDFkztvmXIX3OcUMg/exec';
+        
+        document.getElementById('endpoint-url').textContent = ENDPOINT_URL;
+        
+        document.getElementById('test-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const resultado = document.getElementById('resultado');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            resultado.innerHTML = '⏳ Enviando datos...';
+            resultado.className = '';
+            
+            const payload = {
+                evento: 'daimiel',
+                busOptions: ['ida'],
+                personas: [{
+                    nombre_apellidos: document.getElementById('nombre').value,
+                    prefijo: '+34',
+                    telefono: document.getElementById('telefono').value,
+                    alergias: document.getElementById('alergias').value,
+                    es_principal: true,
+                    consentimiento: 'Sí',
+                    origen_url: window.location.href,
+                    user_agent: navigator.userAgent
+                }]
+            };
+            
+            console.log('📤 Enviando payload:', payload);
+            console.log('🎯 Endpoint:', ENDPOINT_URL);
+            
+            try {
+                const response = await fetch(ENDPOINT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                console.log('✅ Respuesta recibida:', response);
+                
+                // Con mode: 'no-cors', no podemos leer la respuesta
+                // pero si no hubo error de red, asumimos éxito
+                resultado.innerHTML = `
+                    <strong>✅ Solicitud enviada!</strong><br><br>
+                    <strong>Ahora verifica:</strong><br>
+                    1. ¿Apareció una fila nueva en tu Google Sheet?<br>
+                    2. Si NO apareció, revisa:<br>
+                    &nbsp;&nbsp;&nbsp;- El SHEET_ID en el código de Apps Script<br>
+                    &nbsp;&nbsp;&nbsp;- Que hiciste una "Nueva implementación"<br>
+                    &nbsp;&nbsp;&nbsp;- Los logs del Apps Script (Ver > Registros)<br><br>
+                    <strong>Payload enviado:</strong><br>
+                    <pre>${JSON.stringify(payload, null, 2)}</pre>
+                `;
+                resultado.className = 'success';
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                resultado.innerHTML = `
+                    <strong>❌ Error de conexión</strong><br><br>
+                    ${error.message}<br><br>
+                    <strong>Posibles causas:</strong><br>
+                    - La URL del Apps Script es incorrecta<br>
+                    - El Apps Script no está desplegado<br>
+                    - Problemas de red<br><br>
+                    <strong>Revisa la consola del navegador (F12) para más detalles</strong>
+                `;
+                resultado.className = 'error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Prueba';
+            }
+        });
+    </script>
+</body>
+</html>
