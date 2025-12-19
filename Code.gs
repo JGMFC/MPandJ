@@ -3,7 +3,7 @@
 // ============================================
 
 // IMPORTANTE: Reemplaza con el ID de tu Google Sheet
-const SHEET_ID = 'TU_SHEET_ID_AQUI';
+const SHEET_ID = '1YiDqTnu_Ctn3KR-XMvwZmp5SSRs1_C6fkC8UEQkb6oc';
 
 // Columnas de la hoja (cada persona es una fila)
 const COLUMNS = [

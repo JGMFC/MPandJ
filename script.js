@@ -4,7 +4,7 @@
 
 const CONFIG = {
     // URL del Google Apps Script (deploy como Web App)
-    ENDPOINT_URL: 'TU_URL_DE_APPS_SCRIPT_AQUI',
+    ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycbzfe9S4h1-mqTtU7Zmdw13lLh0E0srVB0e9HS_LiHfuz2CYGmq6EwDFkztvmXIX3OcUMg/exec',
     
     // URL de la comunidad de WhatsApp
     WHATSAPP_COMMUNITY_URL: 'https://chat.whatsapp.com/DZNBouDymGLELNyQmrYudh',
