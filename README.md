@@ -1,166 +1,368 @@
-# Web de Boda - María Phia & Javier 💕
+# 💒 Invitación de Boda - María Phia & Javier
 
-Una hermosa web de boda móvil moderna con animaciones y formulario de confirmación integrado con Google Sheets.
+Web estática de invitación de boda con estilo acuarela, diseñada para GitHub Pages. Incluye formulario RSVP con integración a Google Sheets.
 
 ## 🎨 Características
 
-- **Diseño Responsive**: Optimizado para dispositivos móviles
-- **Animación de Calabaza**: La calabaza se mueve mientras haces scroll
-- **Dos Celebraciones**: 
-  - Daimiel, España - 4 de julio de 2026
-  - Arequipa, Perú - 19 de Diciembre 2026
-- **Formulario de Confirmación**: Los invitados pueden confirmar su asistencia
-- **Integración con Google Sheets**: Las respuestas se guardan automáticamente en hojas separadas
+- **Diseño acuarela premium**: Paleta pastel, ornamentos florales SVG, tipografías elegantes
+- **Timeline animado con mapas**: Itinerario del día con efecto de "revelado pintado" + botones de Google Maps
+- **Formularios RSVP separados**: Un formulario por evento con validación completa
+- **Acompañantes obligatorios**: Campos requeridos para nombre y apellidos completos
+- **Selector de países con banderas**: Prefijos telefónicos ordenados estratégicamente
+- **Integración Google Sheets**: Guarda respuestas automáticamente con formato estructurado
+- **100% responsive**: Optimizado para móviles, tablets y desktop
+- **Sin frameworks**: HTML/CSS/JS vanilla puro
+- **Accesibilidad**: Etiquetas ARIA, contraste adecuado, navegación por teclado
 
-## 📋 Configuración de Google Sheets
+## 📁 Estructura del Proyecto
 
-Para que el formulario funcione y guarde las respuestas en Google Sheets, sigue estos pasos:
-
-### 1. Crear las Hojas de Cálculo
-
-1. Ve a [Google Sheets](https://sheets.google.com)
-2. Crea dos hojas de cálculo nuevas:
-   - Una para "Daimiel - España"
-   - Otra para "Arequipa - Perú"
-
-### 2. Configurar las Columnas
-
-En cada hoja, crea las siguientes columnas en la primera fila:
-
-| Timestamp | Evento | Nombre | Email | Teléfono | Asistencia | Acompañantes | Restricciones | Mensaje |
-|-----------|---------|---------|-------|----------|------------|--------------|---------------|----------|
-
-### 3. Crear el Google Apps Script
-
-Para cada hoja de cálculo:
-
-1. Abre la hoja de cálculo
-2. Ve a **Extensiones → Apps Script**
-3. Borra el código existente y pega el siguiente:
-
-```javascript
-function doPost(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
-    
-    sheet.appendRow([
-      data.timestamp,
-      data.evento,
-      data.nombre,
-      data.email,
-      data.telefono,
-      data.asistencia,
-      data.acompanantes,
-      data.restricciones,
-      data.mensaje
-    ]);
-    
-    return ContentService.createTextOutput(JSON.stringify({
-      'status': 'success'
-    })).setMimeType(ContentService.MimeType.JSON);
-    
-  } catch(error) {
-    return ContentService.createTextOutput(JSON.stringify({
-      'status': 'error',
-      'message': error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
-}
+```
+Web_10/
+├── index.html          # Página principal
+├── styles.css          # Estilos completos
+├── script.js           # Lógica front-end
+├── Code.gs             # Google Apps Script (backend)
+└── README.md           # Este archivo
 ```
 
-4. Guarda el proyecto con un nombre descriptivo (ej: "Webhook Daimiel" o "Webhook Arequipa")
-5. Haz clic en **Implementar → Nueva implementación**
-6. Selecciona el tipo: **Aplicación web**
-7. Configura:
-   - **Ejecutar como**: Tu cuenta
-   - **Quién tiene acceso**: Cualquier persona
-8. Haz clic en **Implementar**
-9. **Copia la URL** que te proporciona (es la URL de la aplicación web)
+## 🚀 Instalación Local
 
-### 4. Configurar las URLs en el Código
+### Requisitos
+- Navegador moderno (Chrome, Firefox, Safari, Edge)
+- Editor de código (VS Code, Sublime, etc.)
 
-1. Abre el archivo `script.js`
-2. En la parte superior, reemplaza las URLs:
+### Pasos
+
+1. **Clonar o descargar el proyecto**
+   ```bash
+   # Si tienes Git
+   git clone https://github.com/tu-usuario/tu-repo.git
+   
+   # O descarga el ZIP y descomprímelo
+   ```
+
+2. **Abrir en navegador**
+   - Simplemente abre `index.html` en tu navegador
+   - O usa un servidor local:
+   
+   ```bash
+   # Con Python 3
+   python -m http.server 8000
+   
+   # Con Node.js (npx)
+   npx serve
+   
+   # Con VS Code
+   # Instala la extensión "Live Server" y haz clic derecho > Open with Live Server
+   ```
+
+3. **Ver en navegador**
+   - Visita: `http://localhost:8000` (o el puerto que uses)
+
+## 📝 Configuración
+
+### 1. Editar Contenido Básico
+
+Abre `script.js` y modifica el objeto `CONFIG`:
 
 ```javascript
 const CONFIG = {
-    DAIMIEL_SHEET_URL: 'PEGA_AQUI_LA_URL_DE_DAIMIEL',
-    AREQUIPA_SHEET_URL: 'PEGA_AQUI_LA_URL_DE_AREQUIPA'
+    // URL del Google Apps Script (ver sección siguiente)
+    ENDPOINT_URL: 'TU_URL_AQUI',
+    
+    // URL de tu comunidad de WhatsApp
+    WHATSAPP_COMMUNITY_URL: 'https://chat.whatsapp.com/TU_LINK_AQUI',
+    
+    // Editar horarios del itinerario
+    itinerarioDaimiel: [
+        {
+            time: '17:00',
+            title: 'Ceremonia Religiosa',
+            description: 'Iglesia de San Pedro, Daimiel'
+        },
+        // ... añade o modifica hitos
+    ],
+    
+    // Configurar eventos para calendario
+    eventos: {
+        daimiel: {
+            date: '2026-07-04',
+            time: '17:00',
+            // ...
+        },
+        arequipa: {
+            date: '2026-12-19',
+            time: '18:00',
+            // ...
+        }
+    }
 };
 ```
 
-## 🚀 Cómo Usar
+### 2. Configurar Google Sheets (OBLIGATORIO para formulario)
 
-1. Abre el archivo `index.html` en tu navegador
-2. Haz scroll para ver las animaciones
-3. Haz clic en cualquier tarjeta de evento para abrir el formulario
-4. Completa el formulario y envía
+#### Paso 1: Crear Google Sheet
 
-## 📱 Vista Previa
+1. Ve a [Google Sheets](https://sheets.google.com)
+2. Crea una nueva hoja
+3. Nómbrala: "Confirmaciones Boda María Phia & Javier"
+4. Copia el **ID** de la URL:
+   ```
+   https://docs.google.com/spreadsheets/d/ABC123XYZ456/edit
+                                          ^^^^^^^^^^^^
+                                          Este es el ID
+   ```
 
-La web incluye:
-- Portada con los nombres de los novios
-- Sección de historia
-- Timeline animado con calabaza
-- Tarjetas de eventos clicables
-- Formulario modal responsive
+#### Paso 2: Configurar Apps Script
 
-## 🎨 Personalización
+1. En la Sheet, ve a **Extensiones > Apps Script**
+2. Borra el código por defecto
+3. Copia TODO el contenido de `Code.gs` y pégalo
+4. En la línea 27, reemplaza `SHEET_ID`:
+   ```javascript
+   const SHEET_ID = 'ABC123XYZ456'; // Tu ID aquí
+   ```
+5. Guarda el proyecto (Ctrl+S)
 
-### Colores
+#### Paso 3: Desplegar como Web App
 
-Puedes cambiar los colores editando las variables CSS en `styles.css`:
+1. Haz clic en **Implementar** > **Nueva implementación**
+2. Configurar:
+   - **Tipo**: Aplicación web
+   - **Ejecutar como**: Yo (tu cuenta)
+   - **Quién tiene acceso**: Cualquier persona
+3. Haz clic en **Implementar**
+4. Autoriza los permisos (Google te pedirá acceso a Sheets)
+5. **Copia la URL** que te da (algo como):
+   ```
+   https://script.google.com/macros/s/AKfycbx.../exec
+   ```
+
+#### Paso 4: Conectar Front-end con Backend
+
+1. Abre `script.js`
+2. En la línea 9, pega la URL:
+   ```javascript
+   ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycbx.../exec',
+   ```
+3. Guarda el archivo
+
+#### Paso 5: Probar
+
+1. Abre tu web local
+2. Rellena y envía el formulario
+3. Verifica que aparezca una fila nueva en tu Google Sheet
+
+### 3. Personalizar Estilos
+
+Para cambiar colores, edita las variables CSS en `styles.css`:
 
 ```css
 :root {
-    --primary-color: #d4a574;
-    --secondary-color: #f5e6d3;
-    --text-dark: #654321;
-    --text-light: #8b7355;
+    /* Paleta de colores */
+    --color-paper: #FAF8F4;
+    --color-terracota: #E75829;
+    --color-orange: #DC8636;
+    --color-green: #99A66F;
+    /* ... más colores */
 }
 ```
 
-### Imágenes
+### 4. Modificar Textos
 
-Actualmente usa imágenes SVG placeholder. Puedes reemplazarlas con imágenes reales:
+Los textos principales están en `index.html`. Busca y reemplaza:
 
-1. Guarda tus imágenes en la carpeta del proyecto
-2. Actualiza las rutas en `index.html`:
+- **Nombres**: Busca "María Phia" y "Javier"
+- **Fechas**: Busca "4 de julio" y "19 de diciembre"
+- **Ubicaciones**: Busca "Daimiel", "Arequipa", "Iglesia de San Pedro", etc.
 
-```html
-<img src="tu-imagen-daimiel.jpg" alt="Daimiel - España">
-<img src="tu-imagen-arequipa.jpg" alt="Arequipa - Perú">
+## 🌐 Publicar en GitHub Pages
+
+### Método 1: Desde GitHub.com
+
+1. **Crear repositorio**
+   - Ve a [GitHub](https://github.com) e inicia sesión
+   - Haz clic en "New repository"
+   - Nombre: `boda-mariaphia-javier` (o el que quieras)
+   - Público
+   - Crear
+
+2. **Subir archivos**
+   - En el repositorio, haz clic en "Add file" > "Upload files"
+   - Arrastra todos los archivos (`index.html`, `styles.css`, `script.js`)
+   - Haz clic en "Commit changes"
+
+3. **Activar GitHub Pages**
+   - Ve a Settings > Pages
+   - Source: Deploy from a branch
+   - Branch: `main` o `master`, carpeta: `/ (root)`
+   - Guardar
+
+4. **Ver tu web**
+   - En 1-2 minutos estará lista en:
+   ```
+   https://tu-usuario.github.io/boda-mariaphia-javier/
+   ```
+
+### Método 2: Desde Git (Terminal)
+
+```bash
+# Inicializar repositorio
+git init
+git add .
+git commit -m "Invitación de boda inicial"
+
+# Conectar con GitHub (crea el repo primero en GitHub)
+git remote add origin https://github.com/tu-usuario/tu-repo.git
+git branch -M main
+git push -u origin main
+
+# GitHub Pages se activará automáticamente o lo configuras en Settings
 ```
 
-## 🌐 Publicación
+## 🔧 Personalización Avanzada
 
-Para publicar tu web:
+### Añadir más flores/ornamentos
 
-### Opción 1: GitHub Pages (Gratis)
-1. Sube los archivos a un repositorio de GitHub
-2. Ve a Settings → Pages
-3. Activa GitHub Pages
+Edita el SVG en `index.html`, sección `<svg width="0" height="0">`:
 
-### Opción 2: Netlify (Gratis)
-1. Arrastra la carpeta del proyecto a [Netlify Drop](https://app.netlify.com/drop)
-2. Tu web estará en línea instantáneamente
+```html
+<g id="mi-flor-nueva">
+    <circle cx="50" cy="50" r="20" fill="#F3D6C1" opacity="0.7"/>
+    <!-- Más elementos SVG -->
+</g>
+```
 
-### Opción 3: Vercel (Gratis)
-1. Sube a GitHub
-2. Importa el proyecto en [Vercel](https://vercel.com)
+Úsalo con:
+```html
+<svg><use href="#mi-flor-nueva"></use></svg>
+```
 
-## 📞 Soporte
+### Cambiar tipografías
 
-Si tienes algún problema con la configuración:
-- Verifica que las URLs de Google Apps Script estén correctamente copiadas
-- Asegúrate de que los permisos estén en "Cualquier persona"
-- Revisa la consola del navegador (F12) para ver posibles errores
+1. Ve a [Google Fonts](https://fonts.google.com)
+2. Elige tus fuentes
+3. Copia el `<link>` en el `<head>` de `index.html`
+4. Actualiza las variables en `styles.css`:
+   ```css
+   --font-script: 'Tu-Fuente-Script', cursive;
+   --font-serif: 'Tu-Fuente-Serif', serif;
+   ```
 
-## ❤️ ¡Felicidades por su boda!
+### 3. Añadir más eventos al itinerario
 
-María Phia y Javier, que disfruten de este día especial en ambas celebraciones.
+En `script.js`, dentro de `CONFIG.itinerarioDaimiel`:
+
+```javascript
+{
+    time: '00:30',
+    title: 'Cierre con Fuegos Artificiales',
+    description: 'Espectáculo pirotécnico',
+    mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España' // Opcional
+}
+```
+
+**Nota**: Puedes añadir `mapsQuery` o `mapsUrl` a cualquier hito:
+- `mapsQuery`: Búsqueda en Google Maps (ej: "Iglesia San Pedro Daimiel")
+- `mapsUrl`: URL directa de Google Maps
+- `isBus: true`: Aplica estilo especial para rutas de transporte
+
+### Crear versión para Arequipa
+
+Cuando tengas los detalles:
+
+1. En `index.html`, reemplaza la sección `.coming-soon` con contenido similar a Daimiel
+2. En `script.js`, crea `CONFIG.itinerarioArequipa` y llama a `initTimeline()` también para Arequipa
+
+## 📊 Ver Estadísticas de Confirmaciones
+
+En Google Apps Script, puedes ejecutar funciones manualmente:
+
+1. Abre el editor de Apps Script
+2. Selecciona la función `generateStats` en el desplegable
+3. Haz clic en "Ejecutar"
+4. Ve los resultados en "Registros" (icono de documento)
+
+O crea una hoja de resumen:
+
+```javascript
+// Ejecutar createSummarySheet() para crear pestaña con stats
+```
+
+## 🐛 Solución de Problemas
+
+### El formulario no se envía
+
+1. **Verifica la URL del Apps Script**: Debe terminar en `/exec`, no `/dev`
+2. **Revisa la consola del navegador** (F12): ¿Hay errores CORS?
+3. **Comprueba el SHEET_ID** en `Code.gs`: ¿Es correcto?
+4. **Permisos**: ¿Autorizaste el Apps Script?
+
+### Los estilos se ven mal
+
+1. **Verifica que `styles.css` esté en la misma carpeta** que `index.html`
+2. **Limpia la caché** del navegador (Ctrl+Shift+R)
+3. **Revisa la consola**: ¿Hay errores 404?
+
+### El timeline no se anima
+
+1. **Abre la consola** del navegador
+2. **Verifica que `script.js` cargue sin errores**
+3. **Haz scroll** hasta la sección del timeline (la animación se activa al hacer scroll)
+
+### Las banderas no se ven
+
+Las banderas son emojis nativos del navegador. Si no se ven:
+- Usa Chrome, Firefox o Safari (Edge también funciona)
+- Algunos sistemas antiguos pueden no tener emojis modernos
+
+## 📱 Compartir la Invitación
+
+Una vez publicada en GitHub Pages:
+
+1. **Copia la URL**:
+   ```
+   https://tu-usuario.github.io/tu-repo/
+   ```
+
+2. **Crea un mensaje para WhatsApp**:
+   ```
+   🎊 ¡Nos casamos! 🎊
+   
+   Te invitamos a celebrar con nosotros.
+   Por favor, confirma tu asistencia aquí:
+   https://tu-usuario.github.io/tu-repo/
+   
+   ¡Te esperamos! 💒
+   María Phia & Javier
+   ```
+
+3. **Envía por**:
+   - WhatsApp
+   - Email
+   - Redes sociales
+   - QR code (genera uno con la URL)
+
+## 🎨 Paleta de Colores
+
+```
+Papel/Fondo:    #FAF8F4, #F0F1ED
+Melocotón/Rosa: #F3D6C1, #E8C0A0, #EE8083
+Terracota:      #E75829, #DC8636, #E29D16, #E8AC4A
+Verde Hoja:     #99A66F, #7B8157, #50563A
+Azul Suave:     #C4DFE9, #9EC1D5
+```
+
+## 📄 Licencia
+
+Este proyecto es de código abierto para uso personal. Puedes modificarlo y adaptarlo para tu boda.
+
+## 💌 Contacto
+
+¿Preguntas o problemas? Abre un issue en el repositorio o contacta directamente con los desarrolladores.
 
 ---
 
-Desarrollado con 💕 para María Phia & Javier
+**¡Feliz boda! 🎉💒🥂**
+
+*Hecho con amor y código por el equipo de desarrollo*

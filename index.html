@@ -3,339 +3,726 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>María Phia & Javier - Próximamente</title>
+    <meta name="description" content="Invitación de boda de María Phia y Javier - Daimiel, España (4 julio) y Arequipa, Perú (19 diciembre)">
+    <title>María Phia & Javier - Nuestra Boda</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #d4a574;
-            --secondary-color: #f5e6d3;
-            --text-dark: #654321;
-            --text-light: #8b7355;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, #fdfbf7 0%, #f5e6d3 50%, #fdfbf7 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
-        }
-
-        .container {
-            max-width: 600px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Decoraciones florales animadas */
-        .flower-decoration {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .flower-1 {
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-            font-size: 60px;
-        }
-
-        .flower-2 {
-            top: 15%;
-            right: 5%;
-            animation-delay: 1s;
-            font-size: 50px;
-        }
-
-        .flower-3 {
-            bottom: 15%;
-            left: 10%;
-            animation-delay: 2s;
-            font-size: 55px;
-        }
-
-        .flower-4 {
-            bottom: 10%;
-            right: 8%;
-            animation-delay: 1.5s;
-            font-size: 65px;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-        }
-
-        .content {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(212, 165, 116, 0.2);
-        }
-
-        .carriage {
-            font-size: 100px;
-            margin-bottom: 30px;
-            display: block;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-30px);
-            }
-        }
-
-        h1 {
-            font-family: 'Alex Brush', cursive;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .and {
-            display: block;
-            font-size: 2rem;
-            margin: 10px 0 20px 0;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .message {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-        }
-
-        .emoji-hearts {
-            font-size: 2rem;
-            margin: 20px 0;
-            letter-spacing: 10px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
-        .coming-features {
-            margin: 40px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(245, 230, 211, 0.5) 100%);
-            border-radius: 20px;
-            border: 2px solid var(--primary-color);
-        }
-
-        .features-title {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .feature-list {
-            list-style: none;
-            text-align: left;
-            display: inline-block;
-        }
-
-        .feature-list li {
-            padding: 8px 0;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
-
-        .feature-list li:before {
-            content: "✓ ";
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        .loading-bar {
-            margin-top: 40px;
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .loading-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), #c49563);
-            border-radius: 10px;
-            animation: loading 2s ease-in-out infinite;
-            width: 70%;
-        }
-
-        @keyframes loading {
-            0%, 100% {
-                width: 30%;
-            }
-            50% {
-                width: 80%;
-            }
-        }
-
-        .contact-info {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            padding-top: 30px;
-            border-top: 2px solid rgba(212, 165, 116, 0.3);
-        }
-
-        .contact-info p {
-            margin: 10px 0;
-        }
-
-        .social-links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .content {
-                padding: 40px 25px;
-                border-radius: 20px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .message {
-                font-size: 1.4rem;
-            }
-
-            .flower-decoration {
-                width: 60px;
-                height: 60px;
-                font-size: 45px !important;
-            }
-
-            .carriage {
-                font-size: 80px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Decoraciones florales -->
-    <div class="flower-decoration flower-1">🌸</div>
-    <div class="flower-decoration flower-2">🌼</div>
-    <div class="flower-decoration flower-3">🌺</div>
-    <div class="flower-decoration flower-4">🌻</div>
-
-    <div class="container">
-        <div class="content">
-            <span class="carriage">🎃</span>
-
-            <h1>
-                María Phia
-                <span class="and">y</span>
-                Javier
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <!-- <div class="floral-corner top-left">
+                <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                    <use href="#floral-ornament-1"></use>
+                </svg>
+            </div>
+            <div class="floral-corner top-right">
+                <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                    <use href="#floral-ornament-2"></use>
+                </svg>
+            </div> -->
+            
+            <!-- <div class="seal-circle">
+                <img src="logo.png" alt="María Phia & Javier" class="logo-image">
+            </div> -->
+            
+            <div class="divider">
+                <svg width="200" height="2" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="1" x2="200" y2="1" stroke="#DC8636" stroke-width="1" opacity="0.5"/>
+                </svg>
+            </div>
+            
+            <h1 class="names">
+                <span class="name-bride">María Phia</span>
+                <span class="ampersand">&</span>
+                <span class="name-groom">Javier</span>
             </h1>
-
-            <p class="subtitle">
-                Nuestro viaje especial está en camino...
+            
+            <div class="divider">
+                <svg width="200" height="2" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="1" x2="200" y2="1" stroke="#DC8636" stroke-width="1" opacity="0.5"/>
+                </svg>
+            </div>
+            
+            <p class="hero-dates">
+                Dos celebraciones, un amor
             </p>
+            
+            <div class="hero-events-buttons">
+                <a href="#daimiel" class="cta-button cta-spain">
+                </a>
+                <a href="#arequipa" class="cta-button cta-peru">
+                </a>
+            </div>
+            
+            <div class="scroll-indicator">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#DC8636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
 
-            <div class="message">
-                Estamos trabajando en ello ✨
+    <div class="footer-separation">
+        <svg width="100%" height="2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <line x1="0" y1="1" x2="100%" y2="1" stroke="#DC8636" stroke-width="1" opacity="0.3"/>
+        </svg>
+    </div>
+
+    <!-- ============================================
+         SECCIÓN COMPLETA: DAIMIEL, ESPAÑA
+         ============================================ -->
+    <section class="event-full-section daimiel-full" id="daimiel">
+        <!-- Watercolor Background -->
+        <div class="watercolor-overlay watercolor-spain">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <defs>
+                    <filter id="watercolor-filter">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                </defs>
+                <ellipse cx="300" cy="200" rx="400" ry="300" fill="#F3D6C1" opacity="0.4" filter="url(#watercolor-filter)"/>
+                <ellipse cx="1600" cy="300" rx="500" ry="350" fill="#E8C0A0" opacity="0.35" filter="url(#watercolor-filter)"/>
+                <ellipse cx="900" cy="800" rx="600" ry="400" fill="#EE8083" opacity="0.3" filter="url(#watercolor-filter)"/>
+                <circle cx="1400" cy="700" r="250" fill="#E75829" opacity="0.25" filter="url(#watercolor-filter)"/>
+            </svg>
+        </div>
+        
+        <div class="container">
+            <!-- Header del evento -->
+            <div class="event-header">
+                <h2 class="section-title script watercolor-title painting-effect">Daimiel</h2>
+                <p class="event-location-subtitle">España</p>
+                <div class="event-date-large">
+                    <span class="day">4</span>
+                    <div class="month-year">
+                        <span class="month">Julio</span>
+                        <span class="year">2026</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="emoji-hearts">💕 💕 💕</div>
-
-            <div class="coming-features">
-                <p class="features-title">Pronto podrás:</p>
-                <ul class="feature-list">
-                    <li>Confirmar tu asistencia</li>
-                    <li>Conocer los detalles de ambas celebraciones</li>
-                    <li>Disfrutar de nuestro viaje virtual</li>
-                    <li>Compartir tus mejores deseos</li>
-                </ul>
+            <!-- Itinerario Animado -->
+            <div class="timeline-section">
+                <h3 class="timeline-title">Itinerario del día</h3>
+                <div class="timeline" id="timeline-daimiel">
+                    <!-- Camino sinuoso de fondo -->
+                    <svg class="timeline-path" viewBox="0 0 700 1200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="watercolor-path">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" result="turbulence"/>
+                                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+                            </filter>
+                        </defs>
+                        <path class="path-line" d="M 50 0 Q 150 100, 100 200 T 550 400 T 150 600 T 600 800 T 100 1000 L 100 1200" 
+                              fill="none" 
+                              stroke="url(#pathGradient)" 
+                              stroke-width="6" 
+                              stroke-linecap="round"
+                              filter="url(#watercolor-path)"/>
+                        <defs>
+                            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#E8AC4A;stop-opacity:0.3" />
+                                <stop offset="25%" style="stop-color:#E75829;stop-opacity:0.4" />
+                                <stop offset="50%" style="stop-color:#99A66F;stop-opacity:0.35" />
+                                <stop offset="75%" style="stop-color:#DC8636;stop-opacity:0.4" />
+                                <stop offset="100%" style="stop-color:#C4DFE9;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <!-- Se generará dinámicamente desde script.js -->
+                </div>
             </div>
-
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-
-            <div class="contact-info">
-                <p><strong>¡Vuelve pronto para descubrir nuestra web!</strong></p>
-                <p>Daimiel, España - 4 de julio de 2026</p>
-                <p>Arequipa, Perú - 19 de Diciembre 2026</p>
-                <div class="social-links">
-                    <a href="mailto:contact@example.com" title="Email">📧</a>
-                    <a href="#" title="Whatsapp">💬</a>
+            
+            <!-- RSVP Daimiel -->
+            <div class="rsvp-inline" id="rsvp-daimiel">
+                <div class="section-header">
+                    <h3 class="section-title">Confirma tu Asistencia</h3>
+                    <p class="section-subtitle">Para el evento de Daimiel, España</p>
+                </div>
+                
+                <form id="rsvp-form-daimiel" class="rsvp-form" data-event="daimiel" novalidate>
+                    <input type="text" name="website" id="website-daimiel" style="display:none" tabindex="-1" autocomplete="off">
+                    
+                    <div class="attendees-section">
+                        <h4 class="attendees-title"></h4>
+                        
+                        <!-- Persona Principal (ID = 0) -->
+                        <div class="person-card" data-person-index="0" data-is-main="true">
+                            <div class="form-group">
+                                <label for="name-daimiel-0">Nombre y Apellidos <span class="required">*</span></label>
+                                <input type="text" id="name-daimiel-0" name="name-0" required data-person-index="0">
+                                <span class="error-message" id="error-name-daimiel-0"></span>
+                            </div>
+                            
+                            <div class="form-group form-group-phone">
+                                <label for="phone-daimiel-0">Teléfono <span class="required">*</span></label>
+                                <div class="phone-input-group">
+                                    <select id="phone-prefix-daimiel-0" name="phone-prefix-0" required data-person-index="0">
+                                        <option value="+51" data-flag="🇵🇪">🇵🇪 +51</option>
+                                        <option value="+34" data-flag="🇪🇸" selected>🇪🇸 +34</option>
+                                        <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
+                                        <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
+                                        <option value="+54" data-flag="🇦🇷">🇦🇷 +54</option>
+                                        <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
+                                        <option value="+56" data-flag="🇨🇱">🇨🇱 +56</option>
+                                        <option value="+57" data-flag="🇨🇴">🇨🇴 +57</option>
+                                        <option value="+52" data-flag="🇲🇽">🇲🇽 +52</option>
+                                    </select>
+                                    <input type="tel" id="phone-daimiel-0" name="phone-0" required placeholder="Número" data-person-index="0">
+                                </div>
+                                <span class="error-message" id="error-phone-daimiel-0"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="allergies-daimiel-0">Alergias o intolerancias</label>
+                                <textarea id="allergies-daimiel-0" name="allergies-0" rows="2" placeholder="Ej: Gluten, lactosa, frutos secos..." data-person-index="0"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección de Acompañantes -->
+                    <div class="companions-section">
+                        <div class="companions-header">
+                            <h4 class="attendees-title"></h4>
+                            <button type="button" class="add-companion-btn" id="add-companion-daimiel">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M10 6V14M6 10H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                Añadir acompañante
+                            </button>
+                        </div>
+                        
+                        <div id="companions-container-daimiel" class="companions-container">
+                            <!-- Los acompañantes se añaden dinámicamente aquí -->
+                        </div>
+                    </div>
+                    
+                    <!-- Sección de Autobuses -->
+                    <div class="bus-options-section">
+                        <h4 class="attendees-title">Servicio de Autobús (Opcional)</h4>
+                        <p class="section-hint">Disponemos de autobuses para facilitar tu desplazamiento. Marca los tramos que necesites:</p>
+                        
+                        <div class="bus-options">
+                            <label class="checkbox-label bus-option">
+                                <input type="checkbox" name="bus" value="ciudad-real-daimiel" id="bus-cr-daimiel">
+                                <span class="checkbox-custom"></span>
+                                <span class="bus-option-text">
+                                    <strong>Ciudad Real → Daimiel</strong>
+                                    <span class="bus-time">Salida: 16:00h desde Estación AVE</span>
+                                </span>
+                            </label>
+                            
+                            <label class="checkbox-label bus-option">
+                                <input type="checkbox" name="bus" value="daimiel-vicario" id="bus-daimiel-vicario">
+                                <span class="checkbox-custom"></span>
+                                <span class="bus-option-text">
+                                    <strong>Daimiel → Pago del Vicario</strong>
+                                    <span class="bus-time">Salida: 18:00h desde Iglesia de San Pedro</span>
+                                </span>
+                            </label>
+                            
+                            <label class="checkbox-label bus-option">
+                                <input type="checkbox" name="bus" value="vicario-daimiel" id="bus-vicario-daimiel">
+                                <span class="checkbox-custom"></span>
+                                <span class="bus-option-text">
+                                    <strong>Pago del Vicario → Daimiel/Ciudad Real</strong>
+                                    <span class="bus-time">Salida: 02:00h (con parada en Ciudad Real)</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label consent-label">
+                            <input type="checkbox" name="consent" id="consent-daimiel" required>
+                            <span class="checkbox-custom"></span>
+                            <span>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></span>
+                        </label>
+                        <span class="error-message" id="error-consent-daimiel"></span>
+                    </div>
+                    
+                    <button type="submit" class="submit-button" id="submit-btn-daimiel">
+                        <span class="button-text">Confirmar Asistencia - Daimiel</span>
+                        <span class="button-loading" style="display: none;">
+                            <svg class="spinner" width="20" height="20" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="31.415, 31.415" stroke-linecap="round">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                            Enviando...
+                        </span>
+                    </button>
+                </form>
+                
+                <div id="success-message-daimiel" class="success-message" style="display: none;">
+                    <div class="success-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="#99A66F" opacity="0.2"/>
+                            <path d="M15 30L25 40L45 20" stroke="#99A66F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>¡Gracias por confirmar!</h3>
+                    <p>Nos vemos en Daimiel el 4 de julio.</p>
+                    <div class="success-actions">
+                        <a href="https://chat.whatsapp.com/DZNBouDymGLELNyQmrYudh" id="whatsapp-btn-daimiel" class="action-button whatsapp-button" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            Unirme a WhatsApp
+                        </a>
+                        <button type="button" id="calendar-btn-daimiel" class="action-button calendar-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="6" width="18" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                                <path d="M7 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M17 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Añadir al calendario
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <div class="footer-separation">
+        <svg width="100%" height="2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <line x1="0" y1="1" x2="100%" y2="1" stroke="#DC8636" stroke-width="1" opacity="0.3"/>
+        </svg>
     </div>
+
+    <!-- ============================================
+         SECCIÓN COMPLETA: AREQUIPA, PERÚ
+         ============================================ -->
+    <section class="event-full-section arequipa-full" id="arequipa">
+        <!-- Watercolor Background -->
+        <div class="watercolor-overlay watercolor-peru">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <ellipse cx="1600" cy="250" rx="450" ry="320" fill="#C4DFE9" opacity="0.4" filter="url(#watercolor-filter)"/>
+                <ellipse cx="300" cy="400" rx="550" ry="380" fill="#99A66F" opacity="0.35" filter="url(#watercolor-filter)"/>
+                <ellipse cx="1000" cy="750" rx="650" ry="420" fill="#E8C0A0" opacity="0.3" filter="url(#watercolor-filter)"/>
+                <circle cx="500" cy="800" r="280" fill="#E75829" opacity="0.2" filter="url(#watercolor-filter)"/>
+            </svg>
+        </div>
+        
+        <div class="container">
+            <!-- Header del evento -->
+            <div class="event-header">
+                <h2 class="section-title script watercolor-title painting-effect">Arequipa</h2>
+                <p class="event-location-subtitle">Perú</p>
+                <div class="event-date-large">
+                    <span class="day">19</span>
+                    <div class="month-year">
+                        <span class="month">Diciembre</span>
+                        <span class="year">2026</span>
+                    </div>
+                </div>
+            </div>
+
+    <!-- Arequipa Details Section -->
+            
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#flower-icon"></use>
+                    </svg>
+                </div>
+                <h3>Detalles próximamente</h3>
+                <p>Estamos ultimando los detalles de esta celebración especial.<br>Te mantendremos informado muy pronto.</p>
+                <div class="arequipa-placeholder">
+                    <div class="placeholder-item">
+                        <span class="placeholder-label">Ceremonia</span>
+                        <span class="placeholder-value">Por confirmar</span>
+                    </div>
+                    <div class="placeholder-item">
+                        <span class="placeholder-label">Celebración</span>
+                        <span class="placeholder-value">Por confirmar</span>
+                    </div>
+                    <div class="placeholder-item">
+                        <span class="placeholder-label">Hora</span>
+                        <span class="placeholder-value">Por confirmar</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RSVP Arequipa -->
+            <div class="rsvp-inline" id="rsvp-arequipa">
+                <div class="section-header">
+                    <h3 class="section-title">Confirma tu Asistencia</h3>
+                    <p class="section-subtitle">Para el evento de Arequipa, Perú</p>
+                </div>
+                
+                <form id="rsvp-form-arequipa" class="rsvp-form" data-event="arequipa" novalidate>
+                    <input type="text" name="website" id="website-arequipa" style="display:none" tabindex="-1" autocomplete="off">
+                    
+                    <div class="attendees-section">
+                        <h4 class="attendees-title">Invitado Principal</h4>
+                        
+                        <!-- Persona Principal (ID = 0) -->
+                        <div class="person-card" data-person-index="0" data-is-main="true">
+                            <div class="form-group">
+                                <label for="name-arequipa-0">Nombre y Apellidos <span class="required">*</span></label>
+                                <input type="text" id="name-arequipa-0" name="name-0" required data-person-index="0">
+                                <span class="error-message" id="error-name-arequipa-0"></span>
+                            </div>
+                            
+                            <div class="form-group form-group-phone">
+                                <label for="phone-arequipa-0">Teléfono <span class="required">*</span></label>
+                                <div class="phone-input-group">
+                                    <select id="phone-prefix-arequipa-0" name="phone-prefix-0" required data-person-index="0">
+                                        <option value="+51" data-flag="🇵🇪" selected>🇵🇪 +51</option>
+                                        <option value="+34" data-flag="🇪🇸">🇪🇸 +34</option>
+                                        <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
+                                        <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
+                                        <option value="+54" data-flag="🇦🇷">🇦🇷 +54</option>
+                                        <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
+                                        <option value="+56" data-flag="🇨🇱">🇨🇱 +56</option>
+                                        <option value="+57" data-flag="🇨🇴">🇨🇴 +57</option>
+                                        <option value="+52" data-flag="🇲🇽">🇲🇽 +52</option>
+                                    </select>
+                                    <input type="tel" id="phone-arequipa-0" name="phone-0" required placeholder="Número" data-person-index="0">
+                                </div>
+                                <span class="error-message" id="error-phone-arequipa-0"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="allergies-arequipa-0">Alergias o intolerancias</label>
+                                <textarea id="allergies-arequipa-0" name="allergies-0" rows="2" placeholder="Ej: Gluten, lactosa, frutos secos..." data-person-index="0"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección de Acompañantes -->
+                    <div class="companions-section">
+                        <div class="companions-header">
+                            <h4 class="attendees-title">Acompañantes</h4>
+                            <button type="button" class="add-companion-btn" id="add-companion-arequipa">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M10 6V14M6 10H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                Añadir acompañante
+                            </button>
+                        </div>
+                        
+                        <div id="companions-container-arequipa" class="companions-container">
+                            <!-- Los acompañantes se añaden dinámicamente aquí -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label consent-label">
+                            <input type="checkbox" name="consent" id="consent-arequipa" required>
+                            <span class="checkbox-custom"></span>
+                            <span>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></span>
+                        </label>
+                        <span class="error-message" id="error-consent-arequipa"></span>
+                    </div>
+                    
+                    <button type="submit" class="submit-button" id="submit-btn-arequipa">
+                        <span class="button-text">Confirmar Asistencia - Arequipa</span>
+                        <span class="button-loading" style="display: none;">
+                            <svg class="spinner" width="20" height="20" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="31.415, 31.415" stroke-linecap="round">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                            Enviando...
+                        </span>
+                    </button>
+                </form>
+                
+                <div id="success-message-arequipa" class="success-message" style="display: none;">
+                    <div class="success-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="#99A66F" opacity="0.2"/>
+                            <path d="M15 30L25 40L45 20" stroke="#99A66F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>¡Gracias por confirmar!</h3>
+                    <p>Nos vemos en Arequipa el 19 de diciembre.</p>
+                    <div class="success-actions">
+                        <a href="https://chat.whatsapp.com/DZNBouDymGLELNyQmrYudh" id="whatsapp-btn-arequipa" class="action-button whatsapp-button" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            Unirme a WhatsApp
+                        </a>
+                        <button type="button" id="calendar-btn-arequipa" class="action-button calendar-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="6" width="18" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                                <path d="M7 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M17 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Añadir al calendario
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección eliminada: RSVP unificado -->
+    <section class="rsvp-section-old" id="rsvp" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title script">Confirma tu Asistencia</h2>
+                <p class="section-subtitle">Tu presencia es el mejor regalo. Por favor, confirma antes del 1 de junio de 2026</p>
+            </div>
+            
+            <form id="rsvp-form" class="rsvp-form" novalidate>
+                <!-- Honeypot para anti-spam -->
+                <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off">
+                
+                <div class="form-group">
+                    <label for="name">Nombre y Apellidos <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                    <span class="error-message" id="error-name"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label>Evento(s) al que asistes <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="events" value="daimiel" id="event-daimiel">
+                            <span class="checkbox-custom"></span>
+                            Daimiel, España (4 de julio)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="events" value="arequipa" id="event-arequipa">
+                            <span class="checkbox-custom"></span>
+                            Arequipa, Perú (19 de diciembre)
+                        </label>
+                    </div>
+                    <span class="error-message" id="error-events"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companions">Número de acompañantes</label>
+                    <input type="number" id="companions" name="companions" min="0" max="10" value="0">
+                    <span class="form-hint">¿Vienes con alguien? Indícanos cuántos</span>
+                </div>
+                
+                <div id="companions-names-container" class="companions-names" style="display: none;">
+                    <!-- Se generará dinámicamente -->
+                </div>
+                
+                <div class="form-group form-group-phone">
+                    <label for="phone">Teléfono de contacto <span class="required">*</span></label>
+                    <div class="phone-input-group">
+                        <select id="phone-prefix" name="phone-prefix" required aria-required="true">
+                            <option value="+51" data-flag="🇵🇪" selected>🇵🇪 Perú (+51)</option>
+                            <option value="+34" data-flag="🇪🇸">🇪🇸 España (+34)</option>
+                            <option value="+1" data-flag="🇺🇸">🇺🇸 Estados Unidos (+1)</option>
+                            <option value="+44" data-flag="🇬🇧">🇬🇧 Reino Unido (+44)</option>
+                            <option value="+54" data-flag="🇦🇷">🇦🇷 Argentina (+54)</option>
+                            <option value="+55" data-flag="🇧🇷">🇧🇷 Brasil (+55)</option>
+                            <option value="+56" data-flag="🇨🇱">🇨🇱 Chile (+56)</option>
+                            <option value="+57" data-flag="🇨🇴">🇨🇴 Colombia (+57)</option>
+                            <option value="+52" data-flag="🇲🇽">🇲🇽 México (+52)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" required aria-required="true" placeholder="Número de teléfono">
+                    </div>
+                    <span class="error-message" id="error-phone"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="allergies">Alergias o intolerancias alimentarias</label>
+                    <textarea id="allergies" name="allergies" rows="3" placeholder="Si tienes alguna restricción alimentaria, háznos saber"></textarea>
+                </div>
+                
+                <!-- Bus Options (solo si selecciona Daimiel) -->
+                <div id="bus-options" class="form-group bus-options" style="display: none;">
+                    <label>Servicio de autobús (Daimiel)</label>
+                    <p class="form-hint">Marca los tramos que necesites</p>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="bus" value="ciudad-real-daimiel">
+                            <span class="checkbox-custom"></span>
+                            Ciudad Real → Daimiel
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="bus" value="daimiel-vicario">
+                            <span class="checkbox-custom"></span>
+                            Daimiel → Pago del Vicario
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="bus" value="vicario-daimiel">
+                            <span class="checkbox-custom"></span>
+                            Pago del Vicario → Daimiel (con parada en Ciudad Real)
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label consent-label">
+                        <input type="checkbox" name="consent" id="consent" required aria-required="true">
+                        <span class="checkbox-custom"></span>
+                        <span>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></span>
+                    </label>
+                    <span class="error-message" id="error-consent"></span>
+                </div>
+                
+                <button type="submit" class="submit-button" id="submit-btn">
+                    <span class="button-text">Confirmar Asistencia</span>
+                    <span class="button-loading" style="display: none;">
+                        <svg class="spinner" width="20" height="20" viewBox="0 0 50 50">
+                            <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="31.415, 31.415" stroke-linecap="round">
+                                <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                        Enviando...
+                    </span>
+                </button>
+            </form>
+            
+            <!-- Success Message -->
+            <div id="success-message" class="success-message" style="display: none;">
+                <div class="success-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="28" fill="#99A66F" opacity="0.2"/>
+                        <path d="M15 30L25 40L45 20" stroke="#99A66F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>¡Gracias por confirmar!</h3>
+                <p>Hemos recibido tu confirmación. Nos vemos pronto para celebrar juntos.</p>
+                <div class="success-actions">
+                    <a href="#" id="whatsapp-btn" class="action-button whatsapp-button" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        Unirme a la comunidad de WhatsApp
+                    </a>
+                    <button type="button" id="calendar-btn" class="action-button calendar-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="6" width="18" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M17 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Añadir al calendario
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-decoration">
+            <svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+                <use href="#footer-decoration"></use>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <p class="footer-names">María Phia & Javier</p>
+            <p class="footer-date">2026</p>
+            <p class="footer-tagline">Dos países, un amor</p>
+        </div>
+    </footer>
+
+    <!-- SVG Definitions -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <!-- Floral Ornament 1 (Top Left) -->
+            <g id="floral-ornament-1">
+                <path d="M10 140 Q20 120 30 110 Q35 100 45 95 Q55 90 60 85" fill="none" stroke="#99A66F" stroke-width="2" opacity="0.6"/>
+                <circle cx="45" cy="95" r="8" fill="#F3D6C1" opacity="0.7"/>
+                <circle cx="30" cy="110" r="10" fill="#E8C0A0" opacity="0.6"/>
+                <circle cx="50" cy="100" r="6" fill="#EE8083" opacity="0.5"/>
+                <ellipse cx="25" cy="115" rx="12" ry="8" fill="#99A66F" opacity="0.4" transform="rotate(-30 25 115)"/>
+                <path d="M60 85 Q65 80 70 78 Q72 76 75 75" fill="none" stroke="#7B8157" stroke-width="1.5" opacity="0.5"/>
+            </g>
+            
+            <!-- Floral Ornament 2 (Top Right) -->
+            <g id="floral-ornament-2" transform="scale(-1, 1) translate(-150, 0)">
+                <path d="M10 140 Q20 120 30 110 Q35 100 45 95 Q55 90 60 85" fill="none" stroke="#99A66F" stroke-width="2" opacity="0.6"/>
+                <circle cx="45" cy="95" r="8" fill="#F3D6C1" opacity="0.7"/>
+                <circle cx="30" cy="110" r="10" fill="#E8C0A0" opacity="0.6"/>
+                <circle cx="50" cy="100" r="6" fill="#EE8083" opacity="0.5"/>
+                <ellipse cx="25" cy="115" rx="12" ry="8" fill="#C4DFE9" opacity="0.4" transform="rotate(-30 25 115)"/>
+            </g>
+            
+            <!-- Watercolor Background 1 -->
+            <g id="watercolor-bg-1">
+                <ellipse cx="200" cy="150" rx="180" ry="140" fill="#F3D6C1" opacity="0.3"/>
+                <ellipse cx="220" cy="180" rx="160" ry="120" fill="#E8C0A0" opacity="0.25"/>
+                <ellipse cx="180" cy="200" rx="140" ry="100" fill="#EE8083" opacity="0.2"/>
+                <circle cx="250" cy="120" r="60" fill="#C4DFE9" opacity="0.2"/>
+            </g>
+            
+            <!-- Watercolor Background 2 -->
+            <g id="watercolor-bg-2">
+                <ellipse cx="200" cy="150" rx="180" ry="140" fill="#C4DFE9" opacity="0.3"/>
+                <ellipse cx="180" cy="180" rx="160" ry="120" fill="#99A66F" opacity="0.25"/>
+                <ellipse cx="220" cy="200" rx="140" ry="100" fill="#E8C0A0" opacity="0.2"/>
+                <circle cx="150" cy="120" r="60" fill="#E75829" opacity="0.15"/>
+            </g>
+            
+            <!-- Church Icon -->
+            <g id="church-icon">
+                <path d="M20 10L20 5L18 5L18 10L15 10L20 2L25 10L22 10L22 5L20 5" fill="#DC8636" opacity="0.7"/>
+                <rect x="12" y="15" width="16" height="20" fill="#DC8636" opacity="0.5"/>
+                <rect x="17" y="25" width="6" height="10" fill="#E75829" opacity="0.6"/>
+                <path d="M10 35L30 35L30 15L20 10L10 15Z" fill="none" stroke="#DC8636" stroke-width="1.5"/>
+            </g>
+            
+            <!-- Celebration Icon -->
+            <g id="celebration-icon">
+                <circle cx="20" cy="20" r="15" fill="#E8AC4A" opacity="0.3"/>
+                <path d="M12 20C12 15 15 12 20 12C25 12 28 15 28 20" fill="none" stroke="#DC8636" stroke-width="2"/>
+                <circle cx="20" cy="12" r="3" fill="#EE8083" opacity="0.6"/>
+                <path d="M8 25L12 22L10 28Z" fill="#99A66F" opacity="0.5"/>
+                <path d="M32 25L28 22L30 28Z" fill="#99A66F" opacity="0.5"/>
+            </g>
+            
+            <!-- Bus Icon -->
+            <g id="bus-icon">
+                <rect x="3" y="8" width="24" height="14" rx="2" fill="#DC8636" opacity="0.5"/>
+                <rect x="5" y="10" width="8" height="6" fill="#FAF8F4" opacity="0.8"/>
+                <rect x="17" y="10" width="8" height="6" fill="#FAF8F4" opacity="0.8"/>
+                <circle cx="8" cy="24" r="2" fill="#50563A"/>
+                <circle cx="22" cy="24" r="2" fill="#50563A"/>
+                <line x1="3" y1="22" x2="27" y2="22" stroke="#50563A" stroke-width="1"/>
+            </g>
+            
+            <!-- Flower Icon -->
+            <g id="flower-icon">
+                <circle cx="40" cy="40" r="8" fill="#E8AC4A" opacity="0.6"/>
+                <circle cx="30" cy="35" r="10" fill="#EE8083" opacity="0.5"/>
+                <circle cx="50" cy="35" r="10" fill="#F3D6C1" opacity="0.5"/>
+                <circle cx="35" cy="50" r="10" fill="#C4DFE9" opacity="0.5"/>
+                <circle cx="45" cy="50" r="10" fill="#E8C0A0" opacity="0.5"/>
+                <circle cx="40" cy="40" r="6" fill="#E75829" opacity="0.7"/>
+            </g>
+            
+            <!-- Footer Decoration -->
+            <g id="footer-decoration">
+                <path d="M0 50 Q100 30 200 50 T400 50 T600 50" fill="none" stroke="#99A66F" stroke-width="1" opacity="0.4"/>
+                <circle cx="100" cy="40" r="4" fill="#F3D6C1" opacity="0.6"/>
+                <circle cx="200" cy="50" r="5" fill="#E8C0A0" opacity="0.5"/>
+                <circle cx="300" cy="45" r="4" fill="#EE8083" opacity="0.5"/>
+                <circle cx="400" cy="50" r="5" fill="#C4DFE9" opacity="0.5"/>
+                <circle cx="500" cy="42" r="4" fill="#E8AC4A" opacity="0.6"/>
+            </g>
+        </defs>
+    </svg>
+
+    <script src="script.js"></script>
 </body>
 </html>

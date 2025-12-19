@@ -1,8 +1,0 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    
-    # Redirigir index.html a coming-soon.html
-    RewriteRule ^index\.html$ coming-soon.html [L,R=301]
-    RewriteRule ^$ coming-soon.html [L,R=301]
-</IfModule>
