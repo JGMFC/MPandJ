@@ -92,11 +92,31 @@
                         <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise"/>
                         <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"/>
                     </filter>
+                    <filter id="watercolor-map">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise"/>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G"/>
+                        <feGaussianBlur stdDeviation="1.5"/>
+                    </filter>
                 </defs>
+                
+                <!-- Manchas de acuarela de fondo -->
                 <ellipse cx="300" cy="200" rx="400" ry="300" fill="#F3D6C1" opacity="0.4" filter="url(#watercolor-filter)"/>
                 <ellipse cx="1600" cy="300" rx="500" ry="350" fill="#E8C0A0" opacity="0.35" filter="url(#watercolor-filter)"/>
                 <ellipse cx="900" cy="800" rx="600" ry="400" fill="#EE8083" opacity="0.3" filter="url(#watercolor-filter)"/>
                 <circle cx="1400" cy="700" r="250" fill="#E75829" opacity="0.25" filter="url(#watercolor-filter)"/>
+                
+                <!-- Mapa de España en acuarela (simplificado, posicionado arriba a la derecha) -->
+                <g transform="translate(1200, 120) scale(1.2)" opacity="0.12">
+                    <!-- Península Ibérica (forma simplificada) -->
+                    <path d="M 50 120 L 80 80 L 120 70 L 180 65 L 240 80 L 280 110 L 300 140 L 310 180 L 300 220 L 270 240 L 220 250 L 180 260 L 140 255 L 100 240 L 60 210 L 40 170 Z" 
+                          fill="#E8AC4A" stroke="none" filter="url(#watercolor-map)"/>
+                    <path d="M 50 120 L 80 80 L 120 70 L 180 65 L 240 80 L 280 110 L 300 140 L 310 180 L 300 220 L 270 240 L 220 250 L 180 260 L 140 255 L 100 240 L 60 210 L 40 170 Z" 
+                          fill="none" stroke="#DC8636" stroke-width="2" opacity="0.5" filter="url(#watercolor-map)"/>
+                    
+                    <!-- Punto para Daimiel (centro de España) -->
+                    <circle cx="180" cy="165" r="7" fill="#E75829" opacity="0.7" filter="url(#watercolor-map)"/>
+                    <circle cx="180" cy="165" r="3.5" fill="#E75829" opacity="0.9"/>
+                </g>
             </svg>
         </div>
         
@@ -312,10 +332,24 @@
         <!-- Watercolor Background -->
         <div class="watercolor-overlay watercolor-peru">
             <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <!-- Manchas de acuarela de fondo -->
                 <ellipse cx="1600" cy="250" rx="450" ry="320" fill="#C4DFE9" opacity="0.4" filter="url(#watercolor-filter)"/>
                 <ellipse cx="300" cy="400" rx="550" ry="380" fill="#99A66F" opacity="0.35" filter="url(#watercolor-filter)"/>
                 <ellipse cx="1000" cy="750" rx="650" ry="420" fill="#E8C0A0" opacity="0.3" filter="url(#watercolor-filter)"/>
                 <circle cx="500" cy="800" r="280" fill="#E75829" opacity="0.2" filter="url(#watercolor-filter)"/>
+                
+                <!-- Mapa de Perú en acuarela (simplificado, posicionado arriba a la derecha) -->
+                <g transform="translate(1150, 140) scale(1.1)" opacity="0.12">
+                    <!-- Perú (forma simplificada y alargada) -->
+                    <path d="M 150 50 L 180 60 L 200 80 L 210 110 L 220 150 L 225 200 L 220 260 L 210 320 L 200 380 L 180 430 L 150 460 L 120 450 L 100 410 L 90 360 L 85 300 L 80 240 L 85 180 L 95 130 L 110 90 L 130 65 Z" 
+                          fill="#99A66F" stroke="none" filter="url(#watercolor-map)"/>
+                    <path d="M 150 50 L 180 60 L 200 80 L 210 110 L 220 150 L 225 200 L 220 260 L 210 320 L 200 380 L 180 430 L 150 460 L 120 450 L 100 410 L 90 360 L 85 300 L 80 240 L 85 180 L 95 130 L 110 90 L 130 65 Z" 
+                          fill="none" stroke="#7B8157" stroke-width="2" opacity="0.5" filter="url(#watercolor-map)"/>
+                    
+                    <!-- Punto para Arequipa (sur de Perú) -->
+                    <circle cx="145" cy="370" r="7" fill="#E75829" opacity="0.7" filter="url(#watercolor-map)"/>
+                    <circle cx="145" cy="370" r="3.5" fill="#E75829" opacity="0.9"/>
+                </g>
             </svg>
         </div>
         
@@ -723,7 +757,6 @@
         </defs>
     </svg>
 
-    <script src="debug.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
