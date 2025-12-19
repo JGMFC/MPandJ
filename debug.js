@@ -28,10 +28,36 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('❌ ERROR: CONFIG no está definido - script.js no se cargó correctamente');
         }
         
-        // Verificar si el formulario tiene listeners
+        // Verificar si el formulario tiene listeners y el estado del botón
         const formDaimiel = document.getElementById('rsvp-form-daimiel');
         if (formDaimiel) {
             console.log('🔍 DEBUG: Formulario listo para prueba manual');
+            
+            const submitBtn = formDaimiel.querySelector('.submit-button');
+            if (submitBtn) {
+                console.log('🔍 DEBUG: Botón submit encontrado:', submitBtn.id);
+                console.log('🔍 DEBUG: Botón deshabilitado:', submitBtn.disabled);
+                console.log('🔍 DEBUG: Botón type:', submitBtn.type);
+                
+                // Agregar listener al CLICK del botón
+                submitBtn.addEventListener('click', (e) => {
+                    console.log('🔍 DEBUG: ¡CLICK en botón detectado!');
+                    console.log('🔍 DEBUG: Evento click:', e);
+                    console.log('🔍 DEBUG: defaultPrevented:', e.defaultPrevented);
+                });
+            }
+            
+            // Agregar listener al SUBMIT del formulario
+            formDaimiel.addEventListener('submit', (e) => {
+                console.log('🔍 DEBUG: ¡SUBMIT del formulario detectado!');
+            });
+            
+            // Verificar campos requeridos
+            const requiredFields = formDaimiel.querySelectorAll('[required]');
+            console.log('🔍 DEBUG: Campos requeridos:', requiredFields.length);
+            requiredFields.forEach(field => {
+                console.log(`🔍 DEBUG: Campo ${field.name || field.id}: válido=${field.validity.valid}, valor="${field.value}"`);
+            });
         }
     }, 1000);
 });
