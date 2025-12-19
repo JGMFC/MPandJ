@@ -14,20 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('🔍 DEBUG: ID del form:', formDaimiel.id);
         console.log('🔍 DEBUG: Botón submit:', !!formDaimiel.querySelector('.submit-button'));
         
-        // Agregar listener temporal para verificar
-        formDaimiel.addEventListener('submit', (e) => {
-            console.log('🔍 DEBUG: ¡Formulario enviado!');
-            console.log('🔍 DEBUG: Event:', e);
-        });
+        // NO agregar listener aquí para no interferir con script.js
     }
     
-    // Verificar que CONFIG exista después de 1 segundo
+    // Verificar que CONFIG exista y funciones después de 1 segundo
     setTimeout(() => {
         console.log('🔍 DEBUG: CONFIG definido:', typeof CONFIG !== 'undefined');
         if (typeof CONFIG !== 'undefined') {
             console.log('🔍 DEBUG: ENDPOINT_URL:', CONFIG.ENDPOINT_URL);
+            console.log('🔍 DEBUG: handleFormSubmit definido:', typeof handleFormSubmit !== 'undefined');
+            console.log('🔍 DEBUG: initFormHandlers definido:', typeof initFormHandlers !== 'undefined');
         } else {
             console.error('❌ ERROR: CONFIG no está definido - script.js no se cargó correctamente');
+        }
+        
+        // Verificar si el formulario tiene listeners
+        const formDaimiel = document.getElementById('rsvp-form-daimiel');
+        if (formDaimiel) {
+            console.log('🔍 DEBUG: Formulario listo para prueba manual');
         }
     }, 1000);
 });
