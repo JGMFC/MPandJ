@@ -279,6 +279,14 @@ function initCompanionHandlers() {
 
 function addCompanion(eventId) {
     const container = document.getElementById(`companions-container-${eventId}`);
+    
+    // Limitar a máximo 1 acompañante
+    const currentCompanions = container.querySelectorAll('.companion-card').length;
+    if (currentCompanions >= 1) {
+        alert('Solo puedes añadir 1 acompañante como máximo.');
+        return;
+    }
+    
     const index = companionCounters[eventId]++;
     
     const companionCard = document.createElement('div');
@@ -330,6 +338,12 @@ function addCompanion(eventId) {
     
     container.appendChild(companionCard);
     
+    // Ocultar botón si se alcanza el límite de 1 acompañante
+    const addButton = document.getElementById(`add-companion-${eventId}`);
+    if (container.querySelectorAll('.companion-card').length >= 1) {
+        if (addButton) addButton.style.display = 'none';
+    }
+    
     // Scroll suave hasta el nuevo acompañante
     setTimeout(() => {
         companionCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -344,6 +358,13 @@ function removeCompanion(eventId, index) {
         setTimeout(() => {
             companionCard.remove();
             renumberCompanions(eventId);
+            
+            // Mostrar el botón de añadir si hay menos de 1 acompañante
+            const container = document.getElementById(`companions-container-${eventId}`);
+            const addButton = document.getElementById(`add-companion-${eventId}`);
+            if (container.querySelectorAll('.companion-card').length < 1 && addButton) {
+                addButton.style.display = '';
+            }
         }, 300);
     }
 }
