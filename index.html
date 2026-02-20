@@ -22,7 +22,7 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <!-- <div class="floral-corner top-left">
+            <div class="floral-corner top-left">
                 <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
                     <use href="#floral-ornament-1"></use>
                 </svg>
@@ -31,7 +31,7 @@
                 <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
                     <use href="#floral-ornament-2"></use>
                 </svg>
-            </div> -->
+            </div>
             
             <!-- <div class="seal-circle">
                 <img src="logo.png" alt="María Phia & Javier" class="logo-image">
@@ -166,6 +166,60 @@
                 </div>
             </div>
             
+            <!-- Floral Border Top -->
+            <div class="floral-border floral-border-top">
+                <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                    <use href="#floral-border-pattern"></use>
+                </svg>
+            </div>
+            
+            <!-- Código de Vestimenta -->
+            <div class="dress-code-section">
+                <h3 class="section-title">Código de Vestimenta</h3>
+                <div class="dress-code-content">
+                    <div class="dress-code-intro">
+                        <svg class="dress-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L8 6H6L4 8V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L18 6H16L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M8 6L12 10L16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="dress-code-main">La etiqueta es <strong>formal</strong></p>
+                    </div>
+                    
+                    <div class="dress-code-tips">
+                        <div class="dress-tip">
+                            <span class="tip-icon">☀️</span>
+                            <div class="tip-content">
+                                <strong>El clima de La Mancha</strong>
+                                <p>Ten en cuenta que en julio hace bastante calor. Elige tejidos frescos y cómodos que te permitan disfrutar del día.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dress-tip avoid-colors">
+                            <span class="tip-icon">🎨</span>
+                            <div class="tip-content">
+                                <strong>Sobre la paleta de colores</strong>
+                                <p>Con mucho cariño os pedimos que evitéis los <em>tonos verdes</em> y, por supuesto, el <em>blanco o colores similares</em>, ya que nos gustaría que estuviesen reservados para la novia y su cortejo.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dress-tip">
+                            <span class="tip-icon">✨</span>
+                            <div class="tip-content">
+                                <strong>Sé tú mismo</strong>
+                                <p>Queremos verte elegante pero también con tu toque personal. ¡No tengas miedo de añadir un detalle divertido a tu look!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floral Border Bottom -->
+            <div class="floral-border floral-border-bottom">
+                <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                    <use href="#floral-border-pattern"></use>
+                </svg>
+            </div>
+            
             <!-- RSVP Daimiel -->
             <div class="rsvp-inline" id="rsvp-daimiel">
                 <div class="section-header">
@@ -242,7 +296,7 @@
                                 <span class="checkbox-custom"></span>
                                 <span class="bus-option-text">
                                     <strong>Ciudad Real → Daimiel</strong>
-                                    <span class="bus-time">Salida: 16:00h desde Estación AVE</span>
+                                    <span class="bus-time">Salida: (pendiente hora) Estación AVE</span>
                                 </span>
                             </label>
                             
@@ -260,19 +314,23 @@
                                 <span class="checkbox-custom"></span>
                                 <span class="bus-option-text">
                                     <strong>Pago del Vicario → Daimiel/Ciudad Real</strong>
-                                    <span class="bus-time">Salida: 02:00h (con parada en Ciudad Real)</span>
+                                    <span class="bus-time">Salida: pendiente (con parada en Ciudad Real)</span>
                                 </span>
                             </label>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="checkbox-label consent-label">
-                            <input type="checkbox" name="consent" id="consent-daimiel" required>
-                            <span class="checkbox-custom"></span>
-                            <span>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></span>
-                        </label>
-                        <span class="error-message" id="error-consent-daimiel"></span>
+                    <div class="bus-options-section" style="margin-top: 1.5rem;">
+                        <div class="bus-options">
+                            <label class="checkbox-label bus-option">
+                                <input type="checkbox" name="consent" id="consent-daimiel" required>
+                                <span class="checkbox-custom"></span>
+                                <span class="bus-option-text">
+                                    <strong>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></strong>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="error-message" id="error-consent-daimiel" style="margin-top: 0.5rem; margin-left: 1.25rem;"></span>
                     </div>
                     
                     <button type="submit" class="submit-button" id="submit-btn-daimiel">
@@ -369,6 +427,13 @@
 
     <!-- Arequipa Details Section -->
             
+            <!-- Floral Border Top -->
+            <div class="floral-border floral-border-top">
+                <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                    <use href="#floral-border-pattern"></use>
+                </svg>
+            </div>
+            
             <div class="coming-soon">
                 <div class="coming-soon-icon">
                     <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
@@ -458,13 +523,17 @@
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="checkbox-label consent-label">
-                            <input type="checkbox" name="consent" id="consent-arequipa" required>
-                            <span class="checkbox-custom"></span>
-                            <span>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></span>
-                        </label>
-                        <span class="error-message" id="error-consent-arequipa"></span>
+                    <div class="bus-options-section" style="margin-top: 1.5rem;">
+                        <div class="bus-options">
+                            <label class="checkbox-label bus-option">
+                                <input type="checkbox" name="consent" id="consent-arequipa" required>
+                                <span class="checkbox-custom"></span>
+                                <span class="bus-option-text">
+                                    <strong>Acepto que mis datos se usen solo para la organización de la boda <span class="required">*</span></strong>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="error-message" id="error-consent-arequipa" style="margin-top: 0.5rem; margin-left: 1.25rem;"></span>
                     </div>
                     
                     <button type="submit" class="submit-button" id="submit-btn-arequipa">
@@ -507,6 +576,13 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Floral Border Bottom -->
+            <div class="floral-border floral-border-bottom">
+                <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                    <use href="#floral-border-pattern"></use>
+                </svg>
             </div>
         </div>
     </section>
@@ -675,21 +751,84 @@
         <defs>
             <!-- Floral Ornament 1 (Top Left) -->
             <g id="floral-ornament-1">
-                <path d="M10 140 Q20 120 30 110 Q35 100 45 95 Q55 90 60 85" fill="none" stroke="#99A66F" stroke-width="2" opacity="0.6"/>
-                <circle cx="45" cy="95" r="8" fill="#F3D6C1" opacity="0.7"/>
-                <circle cx="30" cy="110" r="10" fill="#E8C0A0" opacity="0.6"/>
-                <circle cx="50" cy="100" r="6" fill="#EE8083" opacity="0.5"/>
-                <ellipse cx="25" cy="115" rx="12" ry="8" fill="#99A66F" opacity="0.4" transform="rotate(-30 25 115)"/>
-                <path d="M60 85 Q65 80 70 78 Q72 76 75 75" fill="none" stroke="#7B8157" stroke-width="1.5" opacity="0.5"/>
+                <!-- Rama principal -->
+                <path d="M10 140 Q20 120 30 110 Q35 100 45 95 Q55 90 60 85 Q65 80 70 78" fill="none" stroke="#99A66F" stroke-width="2.5" opacity="0.5"/>
+                
+                <!-- Flores grandes -->
+                <ellipse cx="30" cy="110" rx="14" ry="11" fill="#E8AC4A" opacity="0.5" transform="rotate(-30 30 110)"/>
+                <ellipse cx="28" cy="112" rx="12" ry="9" fill="#F3D6C1" opacity="0.6" transform="rotate(20 28 112)"/>
+                <circle cx="29" cy="111" r="5" fill="#E75829" opacity="0.7"/>
+                
+                <ellipse cx="45" cy="95" rx="13" ry="10" fill="#EE8083" opacity="0.5" transform="rotate(15 45 95)"/>
+                <ellipse cx="47" cy="93" rx="11" ry="8" fill="#E8C0A0" opacity="0.6" transform="rotate(-25 47 93)"/>
+                <circle cx="46" cy="94" r="4" fill="#DC8636" opacity="0.7"/>
+                
+                <ellipse cx="60" cy="85" rx="12" ry="9" fill="#F3D6C1" opacity="0.5" transform="rotate(10 60 85)"/>
+                <ellipse cx="58" cy="87" rx="10" ry="8" fill="#E8AC4A" opacity="0.6" transform="rotate(-20 58 87)"/>
+                <circle cx="59" cy="86" r="4" fill="#E75829" opacity="0.7"/>
+                
+                <!-- Flores medianas -->
+                <ellipse cx="20" cy="120" rx="9" ry="7" fill="#EE8083" opacity="0.45" transform="rotate(25 20 120)"/>
+                <circle cx="20" cy="120" r="3" fill="#DC8636" opacity="0.6"/>
+                
+                <ellipse cx="38" cy="103" rx="8" ry="6" fill="#E8C0A0" opacity="0.45" transform="rotate(-15 38 103)"/>
+                <circle cx="38" cy="103" r="3" fill="#E75829" opacity="0.6"/>
+                
+                <ellipse cx="52" cy="90" rx="9" ry="7" fill="#F3D6C1" opacity="0.45" transform="rotate(30 52 90)"/>
+                <circle cx="52" cy="90" r="3" fill="#DC8636" opacity="0.6"/>
+                
+                <!-- Hojas pequeñas -->
+                <ellipse cx="25" cy="115" rx="7" ry="4" fill="#99A66F" opacity="0.35" transform="rotate(45 25 115)"/>
+                <ellipse cx="35" cy="105" rx="6" ry="4" fill="#7B8157" opacity="0.3" transform="rotate(-40 35 105)"/>
+                <ellipse cx="50" cy="92" rx="7" ry="4" fill="#99A66F" opacity="0.35" transform="rotate(50 50 92)"/>
+                <ellipse cx="65" cy="82" rx="6" ry="4" fill="#7B8157" opacity="0.3" transform="rotate(-35 65 82)"/>
+                
+                <!-- Detalles pequeños -->
+                <circle cx="15" cy="125" r="2.5" fill="#EE8083" opacity="0.4"/>
+                <circle cx="42" cy="100" r="2" fill="#E8AC4A" opacity="0.4"/>
+                <circle cx="55" cy="88" r="2.5" fill="#F3D6C1" opacity="0.4"/>
+                <circle cx="68" cy="80" r="2" fill="#E8C0A0" opacity="0.4"/>
             </g>
             
             <!-- Floral Ornament 2 (Top Right) -->
             <g id="floral-ornament-2" transform="scale(-1, 1) translate(-150, 0)">
-                <path d="M10 140 Q20 120 30 110 Q35 100 45 95 Q55 90 60 85" fill="none" stroke="#99A66F" stroke-width="2" opacity="0.6"/>
-                <circle cx="45" cy="95" r="8" fill="#F3D6C1" opacity="0.7"/>
-                <circle cx="30" cy="110" r="10" fill="#E8C0A0" opacity="0.6"/>
-                <circle cx="50" cy="100" r="6" fill="#EE8083" opacity="0.5"/>
-                <ellipse cx="25" cy="115" rx="12" ry="8" fill="#C4DFE9" opacity="0.4" transform="rotate(-30 25 115)"/>
+                <!-- Rama principal -->
+                <path d="M10 140 Q20 120 30 110 Q35 100 45 95 Q55 90 60 85 Q65 80 70 78" fill="none" stroke="#99A66F" stroke-width="2.5" opacity="0.5"/>
+                
+                <!-- Flores grandes -->
+                <ellipse cx="30" cy="110" rx="14" ry="11" fill="#C4DFE9" opacity="0.5" transform="rotate(-30 30 110)"/>
+                <ellipse cx="28" cy="112" rx="12" ry="9" fill="#E8C0A0" opacity="0.6" transform="rotate(20 28 112)"/>
+                <circle cx="29" cy="111" r="5" fill="#99A66F" opacity="0.7"/>
+                
+                <ellipse cx="45" cy="95" rx="13" ry="10" fill="#F3D6C1" opacity="0.5" transform="rotate(15 45 95)"/>
+                <ellipse cx="47" cy="93" rx="11" ry="8" fill="#E8AC4A" opacity="0.6" transform="rotate(-25 47 93)"/>
+                <circle cx="46" cy="94" r="4" fill="#E75829" opacity="0.7"/>
+                
+                <ellipse cx="60" cy="85" rx="12" ry="9" fill="#EE8083" opacity="0.5" transform="rotate(10 60 85)"/>
+                <ellipse cx="58" cy="87" rx="10" ry="8" fill="#E8C0A0" opacity="0.6" transform="rotate(-20 58 87)"/>
+                <circle cx="59" cy="86" r="4" fill="#DC8636" opacity="0.7"/>
+                
+                <!-- Flores medianas -->
+                <ellipse cx="20" cy="120" rx="9" ry="7" fill="#E8AC4A" opacity="0.45" transform="rotate(25 20 120)"/>
+                <circle cx="20" cy="120" r="3" fill="#E75829" opacity="0.6"/>
+                
+                <ellipse cx="38" cy="103" rx="8" ry="6" fill="#C4DFE9" opacity="0.45" transform="rotate(-15 38 103)"/>
+                <circle cx="38" cy="103" r="3" fill="#99A66F" opacity="0.6"/>
+                
+                <ellipse cx="52" cy="90" rx="9" ry="7" fill="#F3D6C1" opacity="0.45" transform="rotate(30 52 90)"/>
+                <circle cx="52" cy="90" r="3" fill="#DC8636" opacity="0.6"/>
+                
+                <!-- Hojas pequeñas -->
+                <ellipse cx="25" cy="115" rx="7" ry="4" fill="#99A66F" opacity="0.35" transform="rotate(45 25 115)"/>
+                <ellipse cx="35" cy="105" rx="6" ry="4" fill="#7B8157" opacity="0.3" transform="rotate(-40 35 105)"/>
+                <ellipse cx="50" cy="92" rx="7" ry="4" fill="#99A66F" opacity="0.35" transform="rotate(50 50 92)"/>
+                <ellipse cx="65" cy="82" rx="6" ry="4" fill="#7B8157" opacity="0.3" transform="rotate(-35 65 82)"/>
+                
+                <!-- Detalles pequeños -->
+                <circle cx="15" cy="125" r="2.5" fill="#C4DFE9" opacity="0.4"/>
+                <circle cx="42" cy="100" r="2" fill="#E8AC4A" opacity="0.4"/>
+                <circle cx="55" cy="88" r="2.5" fill="#F3D6C1" opacity="0.4"/>
+                <circle cx="68" cy="80" r="2" fill="#EE8083" opacity="0.4"/>
             </g>
             
             <!-- Watercolor Background 1 -->
@@ -743,6 +882,73 @@
                 <circle cx="35" cy="50" r="10" fill="#C4DFE9" opacity="0.5"/>
                 <circle cx="45" cy="50" r="10" fill="#E8C0A0" opacity="0.5"/>
                 <circle cx="40" cy="40" r="6" fill="#E75829" opacity="0.7"/>
+            </g>
+            
+            <!-- Floral Border Pattern (Watercolor flowers) -->
+            <g id="floral-border-pattern">
+                <!-- Flores grandes -->
+                <ellipse cx="100" cy="50" rx="25" ry="20" fill="#E8AC4A" opacity="0.4" transform="rotate(-15 100 50)"/>
+                <ellipse cx="105" cy="55" rx="20" ry="18" fill="#F3D6C1" opacity="0.5" transform="rotate(25 105 55)"/>
+                <circle cx="100" cy="52" r="8" fill="#E75829" opacity="0.6"/>
+                
+                <ellipse cx="300" cy="40" rx="22" ry="18" fill="#EE8083" opacity="0.45" transform="rotate(10 300 40)"/>
+                <ellipse cx="305" cy="45" rx="18" ry="16" fill="#E8C0A0" opacity="0.5" transform="rotate(-20 305 45)"/>
+                <circle cx="302" cy="42" r="7" fill="#DC8636" opacity="0.6"/>
+                
+                <ellipse cx="500" cy="55" rx="28" ry="22" fill="#F3D6C1" opacity="0.4" transform="rotate(20 500 55)"/>
+                <ellipse cx="505" cy="50" rx="22" ry="20" fill="#E8AC4A" opacity="0.5" transform="rotate(-10 505 50)"/>
+                <circle cx="502" cy="52" r="9" fill="#E75829" opacity="0.6"/>
+                
+                <ellipse cx="700" cy="45" rx="24" ry="19" fill="#EE8083" opacity="0.45" transform="rotate(-25 700 45)"/>
+                <ellipse cx="695" cy="50" rx="20" ry="17" fill="#E8C0A0" opacity="0.5" transform="rotate(15 695 50)"/>
+                <circle cx="698" cy="47" r="8" fill="#DC8636" opacity="0.6"/>
+                
+                <ellipse cx="900" cy="52" rx="26" ry="21" fill="#E8AC4A" opacity="0.4" transform="rotate(5 900 52)"/>
+                <ellipse cx="895" cy="48" rx="21" ry="19" fill="#F3D6C1" opacity="0.5" transform="rotate(-30 895 48)"/>
+                <circle cx="898" cy="50" r="8" fill="#E75829" opacity="0.6"/>
+                
+                <ellipse cx="1100" cy="48" rx="23" ry="20" fill="#EE8083" opacity="0.45" transform="rotate(18 1100 48)"/>
+                <ellipse cx="1105" cy="53" rx="19" ry="17" fill="#E8C0A0" opacity="0.5" transform="rotate(-12 1105 53)"/>
+                <circle cx="1102" cy="50" r="7" fill="#DC8636" opacity="0.6"/>
+                
+                <!-- Flores medianas -->
+                <ellipse cx="200" cy="60" rx="15" ry="12" fill="#F3D6C1" opacity="0.4" transform="rotate(30 200 60)"/>
+                <circle cx="200" cy="60" r="5" fill="#E75829" opacity="0.5"/>
+                
+                <ellipse cx="400" cy="70" rx="14" ry="11" fill="#E8C0A0" opacity="0.45" transform="rotate(-20 400 70)"/>
+                <circle cx="400" cy="70" r="5" fill="#DC8636" opacity="0.5"/>
+                
+                <ellipse cx="600" cy="65" rx="16" ry="13" fill="#EE8083" opacity="0.4" transform="rotate(25 600 65)"/>
+                <circle cx="600" cy="65" r="5" fill="#E75829" opacity="0.5"/>
+                
+                <ellipse cx="800" cy="68" rx="15" ry="12" fill="#E8AC4A" opacity="0.45" transform="rotate(-15 800 68)"/>
+                <circle cx="800" cy="68" r="5" fill="#DC8636" opacity="0.5"/>
+                
+                <ellipse cx="1000" cy="62" rx="14" ry="11" fill="#F3D6C1" opacity="0.4" transform="rotate(20 1000 62)"/>
+                <circle cx="1000" cy="62" r="5" fill="#E75829" opacity="0.5"/>
+                
+                <!-- Flores pequeñas y hojas -->
+                <ellipse cx="150" cy="75" rx="8" ry="6" fill="#99A66F" opacity="0.3" transform="rotate(45 150 75)"/>
+                <ellipse cx="250" cy="80" rx="9" ry="7" fill="#99A66F" opacity="0.3" transform="rotate(-35 250 80)"/>
+                <ellipse cx="350" cy="78" rx="8" ry="6" fill="#99A66F" opacity="0.3" transform="rotate(40 350 78)"/>
+                <ellipse cx="450" cy="82" rx="9" ry="7" fill="#99A66F" opacity="0.3" transform="rotate(-30 450 82)"/>
+                <ellipse cx="550" cy="75" rx="8" ry="6" fill="#99A66F" opacity="0.3" transform="rotate(35 550 75)"/>
+                <ellipse cx="650" cy="80" rx="9" ry="7" fill="#99A66F" opacity="0.3" transform="rotate(-40 650 80)"/>
+                <ellipse cx="750" cy="77" rx="8" ry="6" fill="#99A66F" opacity="0.3" transform="rotate(50 750 77)"/>
+                <ellipse cx="850" cy="82" rx="9" ry="7" fill="#99A66F" opacity="0.3" transform="rotate(-25 850 82)"/>
+                <ellipse cx="950" cy="75" rx="8" ry="6" fill="#99A66F" opacity="0.3" transform="rotate(38 950 75)"/>
+                <ellipse cx="1050" cy="79" rx="9" ry="7" fill="#99A66F" opacity="0.3" transform="rotate(-32 1050 79)"/>
+                
+                <circle cx="175" cy="85" r="4" fill="#EE8083" opacity="0.35"/>
+                <circle cx="275" cy="88" r="4" fill="#E8AC4A" opacity="0.35"/>
+                <circle cx="375" cy="86" r="4" fill="#F3D6C1" opacity="0.35"/>
+                <circle cx="475" cy="90" r="4" fill="#E8C0A0" opacity="0.35"/>
+                <circle cx="575" cy="85" r="4" fill="#EE8083" opacity="0.35"/>
+                <circle cx="675" cy="88" r="4" fill="#E8AC4A" opacity="0.35"/>
+                <circle cx="775" cy="87" r="4" fill="#F3D6C1" opacity="0.35"/>
+                <circle cx="875" cy="90" r="4" fill="#E8C0A0" opacity="0.35"/>
+                <circle cx="975" cy="84" r="4" fill="#EE8083" opacity="0.35"/>
+                <circle cx="1075" cy="87" r="4" fill="#E8AC4A" opacity="0.35"/>
             </g>
             
             <!-- Footer Decoration -->
