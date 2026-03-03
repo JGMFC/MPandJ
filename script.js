@@ -416,10 +416,13 @@ function collectFormData(form, eventId) {
         const phoneInput = form.querySelector(`[name="phone-${personIndex}"]`);
         const allergiesInput = form.querySelector(`[name="allergies-${personIndex}"]`);
         
+        const rawPhone = phoneInput ? phoneInput.value.trim() : '';
+        const normalizedPhone = rawPhone.replace(/[\s()\-.]/g, '');
+
         persons.push({
             nombre_apellidos: nameInput ? nameInput.value.trim() : '',
             prefijo: prefixInput ? prefixInput.value : '+34',
-            telefono: phoneInput ? phoneInput.value.trim() : '',
+            telefono: normalizedPhone,
             alergias: allergiesInput ? allergiesInput.value.trim() : '',
             es_principal: isMain
         });
@@ -466,7 +469,7 @@ function validateForm(formData, eventId) {
         if (!person.telefono) {
             errors[`phone-${personIndex}`] = 'El teléfono es obligatorio';
         } else if (!/^\d+$/.test(person.telefono)) {
-            errors[`phone-${personIndex}`] = 'Solo números';
+            errors[`phone-${personIndex}`] = 'El teléfono solo puede contener números';
         }
     });
     
@@ -479,6 +482,8 @@ function validateForm(formData, eventId) {
 }
 
 function showErrors(errors, eventId) {
+    const form = document.getElementById(`rsvp-form-${eventId}`);
+
     // Limpiar errores previos
     document.querySelectorAll(`#rsvp-form-${eventId} .error-message`).forEach(el => {
         el.textContent = '';
@@ -490,8 +495,23 @@ function showErrors(errors, eventId) {
     
     // Mostrar nuevos errores
     Object.keys(errors).forEach(field => {
-        const errorEl = document.getElementById(`error-${field}-${eventId}`);
-        const inputEl = document.getElementById(`${field}-${eventId}`);
+        let errorEl = document.getElementById(`error-${field}-${eventId}`);
+        let inputEl = document.getElementById(`${field}-${eventId}`);
+
+        // Compatibilidad con IDs de inputs del tipo: name-daimiel-0 / error-name-daimiel-0
+        // cuando el campo viene como: name-0 o phone-0
+        if (!errorEl || !inputEl) {
+            const fieldParts = field.split('-');
+            if (fieldParts.length === 2) {
+                const [fieldName, personIndex] = fieldParts;
+                errorEl = errorEl || document.getElementById(`error-${fieldName}-${eventId}-${personIndex}`);
+                inputEl = inputEl || document.getElementById(`${fieldName}-${eventId}-${personIndex}`);
+            }
+        }
+
+        if (!inputEl && form) {
+            inputEl = form.querySelector(`[name="${field}"]`);
+        }
         
         if (errorEl) {
             errorEl.textContent = errors[field];
