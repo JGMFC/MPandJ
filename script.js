@@ -1,62 +1,63 @@
-// ============================================
-// CONFIGURACIÓN
+﻿// ============================================
+// CONFIGURACIÃ“N
 // ============================================
 
 const CONFIG = {
     // URL del Google Apps Script (deploy como Web App)
-    ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycbzfe9S4h1-mqTtU7Zmdw13lLh0E0srVB0e9HS_LiHfuz2CYGmq6EwDFkztvmXIX3OcUMg/exec',
+    ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycby1mGn7bjiu4FTcjqcp4rrG6Zikh54z5MldowOS4KxifE60bmLh-k-RTpv9BF7gwCQl/exec',
+    BUS_ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycby1mGn7bjiu4FTcjqcp4rrG6Zikh54z5MldowOS4KxifE60bmLh-k-RTpv9BF7gwCQl/exec',
     
     // URL de la comunidad de WhatsApp
     WHATSAPP_COMMUNITY_URL: 'https://chat.whatsapp.com/DZNBouDymGLELNyQmrYudh',
     
-    // Itinerario Daimiel (editable fácilmente)
+    // Itinerario Daimiel (editable fÃ¡cilmente)
     itinerarioDaimiel: [
         {
             time: '18:00',
             title: 'Ceremonia Religiosa',
             description: 'Iglesia de San Pedro, Daimiel',
-            mapsQuery: 'Iglesia de San Pedro, Daimiel, Ciudad Real, España'
+            mapsQuery: 'Iglesia de San Pedro, Daimiel, Ciudad Real, EspaÃ±a'
         },
         {
             time: '19:00',
-            title: 'Traslado a Celebración',
+            title: 'Traslado a CelebraciÃ³n',
             description: 'Viaje hacia Bodega Pago del Vicario',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
         },
         {
             time: '19:30',
-            title: 'Cóctel de Bienvenida',
+            title: 'CÃ³ctel de Bienvenida',
             description: 'Aperitivos y bebidas en la bodega',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
         },
         {
             time: '21:00',
             title: 'Cena',
-            description: 'Banquete nupcial en Pago del Vicario',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
+            description: '',
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
         },
         {
             time: '23:00',
-            title: 'Baile y Celebración',
-            description: '¡Fiesta hasta el amanecer!',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
+            title: 'Baile y CelebraciÃ³n',
+            description: 'Â¡Fiesta hasta el amanecer!',
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
         }
     ],
     
     // Eventos para calendario
     eventos: {
         daimiel: {
-            title: 'Boda María Phia & Javier - Daimiel',
-            location: 'Iglesia de San Pedro, Daimiel, España',
-            description: 'Ceremonia religiosa y celebración en Bodega Pago del Vicario',
+            title: 'Boda MarÃ­a Phia & Javier - Daimiel',
+            location: 'Iglesia de San Pedro, Daimiel, EspaÃ±a',
+            description: 'Ceremonia religiosa y celebraciÃ³n en Bodega Pago del Vicario',
             date: '2026-07-04',
             time: '18:00',
             duration: 6 // horas
         },
         arequipa: {
-            title: 'Boda María Phia & Javier - Arequipa',
-            location: 'Arequipa, Perú',
-            description: 'Celebración en la ciudad blanca',
+            title: 'Boda MarÃ­a Phia & Javier - Arequipa',
+            location: 'Arequipa, PerÃº',
+            description: 'CelebraciÃ³n en la ciudad blanca',
             date: '2026-12-19',
             time: '18:00',
             duration: 6
@@ -65,8 +66,12 @@ const CONFIG = {
 };
 
 // ============================================
-// INICIALIZACIÓN
+// INICIALIZACIÃ“N
 // ============================================
+
+if (window.DAIMIEL_ITINERARIO && Array.isArray(window.DAIMIEL_ITINERARIO)) {
+    CONFIG.itinerarioDaimiel = window.DAIMIEL_ITINERARIO;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initTimeline();
@@ -74,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormHandlers();
     initSmoothScroll();
     initCompanionHandlers();
+    initGiftAccountActions();
+    initBusBridge();
+    initDeepLinkNavigation();
 });
 
 // ============================================
@@ -87,7 +95,7 @@ function initTimeline() {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
         
-        // Generar botón de mapa si existe mapsQuery o mapsUrl
+        // Generar botÃ³n de mapa si existe mapsQuery o mapsUrl
         let mapsButton = '';
         if (item.mapsQuery || item.mapsUrl) {
             const mapsLink = item.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.mapsQuery)}`;
@@ -113,7 +121,7 @@ function initTimeline() {
         timelineContainer.appendChild(timelineItem);
     });
     
-    // Generar el camino después de crear las tarjetas
+    // Generar el camino despuÃ©s de crear las tarjetas
     setTimeout(() => drawTimelinePath(), 100);
 }
 
@@ -131,7 +139,7 @@ function drawTimelinePath() {
         const rect = content.getBoundingClientRect();
         const containerRect = timelineContainer.getBoundingClientRect();
         
-        // Posición relativa al contenedor
+        // PosiciÃ³n relativa al contenedor
         const x = rect.left - containerRect.left + rect.width / 2;
         const y = rect.top - containerRect.top + rect.height / 2;
         
@@ -152,7 +160,7 @@ function drawTimelinePath() {
         const controlX2 = curr.x;
         const controlY2 = midY;
         
-        // Añadir curva bezier
+        // AÃ±adir curva bezier
         pathD += ` C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${curr.x} ${curr.y}`;
     }
     
@@ -166,7 +174,7 @@ function drawTimelinePath() {
         const pathElement = existingSvg.querySelector('.path-line');
         pathElement.setAttribute('d', pathD);
         
-        // Calcular longitud del path para animación
+        // Calcular longitud del path para animaciÃ³n
         const pathLength = pathElement.getTotalLength();
         pathElement.style.strokeDasharray = pathLength;
         pathElement.style.strokeDashoffset = pathLength;
@@ -203,7 +211,7 @@ function initScrollAnimations() {
         observer.observe(item);
     });
     
-    // Observar títulos con efecto de pintado
+    // Observar tÃ­tulos con efecto de pintado
     const titleObserverOptions = {
         threshold: 0.5,
         rootMargin: '0px'
@@ -255,7 +263,7 @@ function initSmoothScroll() {
 }
 
 // ============================================
-// GESTIÓN DE ACOMPAÑANTES
+// GESTIÃ“N DE ACOMPAÃ‘ANTES
 // ============================================
 
 let companionCounters = {
@@ -280,10 +288,10 @@ function initCompanionHandlers() {
 function addCompanion(eventId) {
     const container = document.getElementById(`companions-container-${eventId}`);
     
-    // Limitar a máximo 1 acompañante
+    // Limitar a mÃ¡ximo 1 acompaÃ±ante
     const currentCompanions = container.querySelectorAll('.companion-card').length;
     if (currentCompanions >= 1) {
-        alert('Solo puedes añadir 1 acompañante como máximo.');
+        alert('Solo puedes aÃ±adir 1 acompaÃ±ante como mÃ¡ximo.');
         return;
     }
     
@@ -296,7 +304,7 @@ function addCompanion(eventId) {
     
     companionCard.innerHTML = `
         <div class="companion-header">
-            <h5 class="companion-number">Acompañante #${index}</h5>
+            <h5 class="companion-number">AcompaÃ±ante #${index}</h5>
             <button type="button" class="remove-companion-btn" onclick="removeCompanion('${eventId}', ${index})">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.5 4.5L4.5 13.5M4.5 4.5L13.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -312,20 +320,20 @@ function addCompanion(eventId) {
         </div>
         
         <div class="form-group form-group-phone">
-            <label for="phone-${eventId}-${index}">Teléfono <span class="required">*</span></label>
+            <label for="phone-${eventId}-${index}">TelÃ©fono <span class="required">*</span></label>
             <div class="phone-input-group">
                 <select id="phone-prefix-${eventId}-${index}" name="phone-prefix-${index}" required data-person-index="${index}">
-                    <option value="+51" data-flag="🇵🇪">🇵🇪 +51</option>
-                    <option value="+34" data-flag="🇪🇸" selected>🇪🇸 +34</option>
-                    <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
-                    <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
-                    <option value="+54" data-flag="🇦🇷">🇦🇷 +54</option>
-                    <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
-                    <option value="+56" data-flag="🇨🇱">🇨🇱 +56</option>
-                    <option value="+57" data-flag="🇨🇴">🇨🇴 +57</option>
-                    <option value="+52" data-flag="🇲🇽">🇲🇽 +52</option>
+                    <option value="+51" data-flag="ðŸ‡µðŸ‡ª">ðŸ‡µðŸ‡ª +51</option>
+                    <option value="+34" data-flag="ðŸ‡ªðŸ‡¸" selected>ðŸ‡ªðŸ‡¸ +34</option>
+                    <option value="+1" data-flag="ðŸ‡ºðŸ‡¸">ðŸ‡ºðŸ‡¸ +1</option>
+                    <option value="+44" data-flag="ðŸ‡¬ðŸ‡§">ðŸ‡¬ðŸ‡§ +44</option>
+                    <option value="+54" data-flag="ðŸ‡¦ðŸ‡·">ðŸ‡¦ðŸ‡· +54</option>
+                    <option value="+55" data-flag="ðŸ‡§ðŸ‡·">ðŸ‡§ðŸ‡· +55</option>
+                    <option value="+56" data-flag="ðŸ‡¨ðŸ‡±">ðŸ‡¨ðŸ‡± +56</option>
+                    <option value="+57" data-flag="ðŸ‡¨ðŸ‡´">ðŸ‡¨ðŸ‡´ +57</option>
+                    <option value="+52" data-flag="ðŸ‡²ðŸ‡½">ðŸ‡²ðŸ‡½ +52</option>
                 </select>
-                <input type="tel" id="phone-${eventId}-${index}" name="phone-${index}" required placeholder="Número" data-person-index="${index}">
+                <input type="tel" id="phone-${eventId}-${index}" name="phone-${index}" required placeholder="NÃºmero" data-person-index="${index}">
             </div>
             <span class="error-message" id="error-phone-${eventId}-${index}"></span>
         </div>
@@ -338,13 +346,13 @@ function addCompanion(eventId) {
     
     container.appendChild(companionCard);
     
-    // Ocultar botón si se alcanza el límite de 1 acompañante
+    // Ocultar botÃ³n si se alcanza el lÃ­mite de 1 acompaÃ±ante
     const addButton = document.getElementById(`add-companion-${eventId}`);
     if (container.querySelectorAll('.companion-card').length >= 1) {
         if (addButton) addButton.style.display = 'none';
     }
     
-    // Scroll suave hasta el nuevo acompañante
+    // Scroll suave hasta el nuevo acompaÃ±ante
     setTimeout(() => {
         companionCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
@@ -359,7 +367,7 @@ function removeCompanion(eventId, index) {
             companionCard.remove();
             renumberCompanions(eventId);
             
-            // Mostrar el botón de añadir si hay menos de 1 acompañante
+            // Mostrar el botÃ³n de aÃ±adir si hay menos de 1 acompaÃ±ante
             const container = document.getElementById(`companions-container-${eventId}`);
             const addButton = document.getElementById(`add-companion-${eventId}`);
             if (container.querySelectorAll('.companion-card').length < 1 && addButton) {
@@ -375,7 +383,7 @@ function renumberCompanions(eventId) {
         const number = index + 1;
         const header = card.querySelector('.companion-number');
         if (header) {
-            header.textContent = `Acompañante #${number}`;
+            header.textContent = `AcompaÃ±ante #${number}`;
         }
     });
 }
@@ -396,14 +404,149 @@ function initFormHandlers() {
     if (formArequipa) {
         formArequipa.addEventListener('submit', (e) => handleFormSubmit(e, 'arequipa'));
     }
+
+    // Formulario de autobuses
+    const formBus = document.getElementById('bus-form');
+    if (formBus) {
+        formBus.addEventListener('submit', handleBusFormSubmit);
+    }
+}
+
+function initGiftAccountActions() {
+    const copyButton = document.getElementById('gift-copy-btn');
+    const accountNumber = document.getElementById('gift-account-number');
+    const feedback = document.getElementById('gift-copy-feedback');
+
+    if (!copyButton || !accountNumber || !feedback) return;
+
+    copyButton.addEventListener('click', async () => {
+        const textToCopy = accountNumber.textContent.trim();
+        if (!textToCopy) return;
+
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(textToCopy);
+            } else {
+                const fallbackInput = document.createElement('input');
+                fallbackInput.value = textToCopy;
+                document.body.appendChild(fallbackInput);
+                fallbackInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(fallbackInput);
+            }
+
+            feedback.textContent = 'Numero de cuenta copiado.';
+            setTimeout(() => {
+                feedback.textContent = '';
+            }, 2500);
+        } catch (error) {
+            feedback.textContent = 'No se pudo copiar automaticamente.';
+        }
+    });
+}
+
+function initDeepLinkNavigation() {
+    const allowedSections = new Set(['hero', 'daimiel', 'arequipa', 'autobuses']);
+
+    const hashTarget = window.location.hash ? window.location.hash.replace('#', '') : '';
+    const queryParams = new URLSearchParams(window.location.search);
+    const queryTarget = queryParams.get('seccion') || queryParams.get('section');
+    const targetId = (queryTarget || hashTarget || '').trim().toLowerCase();
+
+    if (!targetId || !allowedSections.has(targetId)) return;
+
+    const scrollToTarget = () => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    // Esperar a que termine de montar el layout inicial para un scroll mÃ¡s estable.
+    window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(scrollToTarget);
+    });
+}
+
+function initBusBridge() {
+    const prefillName = getInitialBusName();
+    if (prefillName) {
+        setBusNamePrefill(prefillName);
+    }
+
+    updateBusFlowHint();
+}
+
+function getInitialBusName() {
+    const queryParams = new URLSearchParams(window.location.search);
+    const fromQuery = (queryParams.get('nombre') || queryParams.get('name') || '').trim();
+    if (fromQuery) return fromQuery;
+
+    try {
+        const saved = JSON.parse(localStorage.getItem('rsvp_daimiel_main_guest') || 'null');
+        if (saved && saved.nombre_apellidos) {
+            return String(saved.nombre_apellidos).trim();
+        }
+    } catch (error) {
+        return '';
+    }
+
+    return '';
+}
+
+function setBusNamePrefill(name) {
+    const busNameInput = document.getElementById('bus-name');
+    if (!busNameInput) return;
+    if (busNameInput.value.trim()) return;
+    busNameInput.value = name;
+}
+
+function updateBusFlowHint() {
+    const hintContainer = document.getElementById('bus-flow-hint');
+    const hintText = document.getElementById('bus-flow-text');
+    const hintButton = document.getElementById('go-to-rsvp-daimiel-btn');
+    if (!hintContainer || !hintText || !hintButton) return;
+
+    const hasMainConfirmation = hasStoredDaimielConfirmation();
+
+    if (hasMainConfirmation) {
+        hintContainer.classList.add('hint-complete');
+        hintText.textContent = 'Perfecto: ya tenemos tu confirmacion de asistencia. Solo revisa y envia los trayectos de autobus.';
+        hintButton.style.display = 'none';
+    } else {
+        hintContainer.classList.remove('hint-complete');
+        hintText.textContent = 'Si aun no has confirmado asistencia en Daimiel, te recomendamos hacerlo primero para no repetir datos.';
+        hintButton.style.display = 'inline-flex';
+    }
+}
+
+function hasStoredDaimielConfirmation() {
+    try {
+        const saved = JSON.parse(localStorage.getItem('rsvp_daimiel_main_guest') || 'null');
+        return Boolean(saved && saved.completed && saved.nombre_apellidos);
+    } catch (error) {
+        return false;
+    }
+}
+
+function storeDaimielMainGuest(name) {
+    if (!name) return;
+    try {
+        localStorage.setItem('rsvp_daimiel_main_guest', JSON.stringify({
+            completed: true,
+            nombre_apellidos: name,
+            saved_at: new Date().toISOString()
+        }));
+    } catch (error) {
+        // Ignore storage errors silently.
+    }
 }
 
 // ============================================
-// RECOPILACIÓN Y ENVÍO DE DATOS
+// RECOPILACIÃ“N Y ENVÃO DE DATOS
 // ============================================
 
 function collectFormData(form, eventId) {
-    // Recopilar todas las personas (principal + acompañantes)
+    // Recopilar todas las personas (principal + acompaÃ±antes)
     const persons = [];
     const personCards = form.querySelectorAll('.person-card');
     
@@ -428,7 +571,7 @@ function collectFormData(form, eventId) {
         });
     });
     
-    // Recopilar opciones de autobús (solo para Daimiel)
+    // Recopilar opciones de autobÃºs (solo para Daimiel)
     let busOptions = [];
     if (eventId === 'daimiel') {
         const busCheckboxes = form.querySelectorAll('[name="bus"]:checked');
@@ -465,11 +608,11 @@ function validateForm(formData, eventId) {
             }
         }
         
-        // Teléfono obligatorio
+        // TelÃ©fono obligatorio
         if (!person.telefono) {
-            errors[`phone-${personIndex}`] = 'El teléfono es obligatorio';
+            errors[`phone-${personIndex}`] = 'El telÃ©fono es obligatorio';
         } else if (!/^\d+$/.test(person.telefono)) {
-            errors[`phone-${personIndex}`] = 'El teléfono solo puede contener números';
+            errors[`phone-${personIndex}`] = 'El telÃ©fono solo puede contener nÃºmeros';
         }
     });
     
@@ -556,19 +699,19 @@ async function handleFormSubmit(e, eventId) {
     // Limpiar errores
     showErrors({}, eventId);
     
-    // Deshabilitar botón
+    // Deshabilitar botÃ³n
     submitBtn.disabled = true;
     buttonText.style.display = 'none';
     buttonLoading.style.display = 'inline-flex';
     
     try {
-        // Preparar payload: array de personas + opciones de autobús
+        // Preparar payload: array de personas + opciones de autobÃºs
         const payload = {
             evento: eventId,
             busOptions: formData.busOptions || [],
             personas: formData.persons.map(person => ({
                 ...person,
-                consentimiento: formData.consent ? 'Sí' : 'No',
+                consentimiento: formData.consent ? 'SÃ­' : 'No',
                 origen_url: window.location.href,
                 user_agent: navigator.userAgent
             }))
@@ -584,13 +727,13 @@ async function handleFormSubmit(e, eventId) {
             body: JSON.stringify(payload)
         });
         
-        // Mostrar mensaje de éxito
+        // Mostrar mensaje de Ã©xito
         form.style.display = 'none';
         const successMsg = document.getElementById(`success-message-${eventId}`);
         successMsg.style.display = 'block';
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        // Configurar botones de acción
+        // Configurar botones de acciÃ³n
         const whatsappBtn = document.getElementById(`whatsapp-btn-${eventId}`);
         if (whatsappBtn) {
             whatsappBtn.href = CONFIG.WHATSAPP_COMMUNITY_URL;
@@ -600,12 +743,169 @@ async function handleFormSubmit(e, eventId) {
         if (calendarBtn) {
             calendarBtn.addEventListener('click', () => downloadCalendar(eventId));
         }
+
+        if (eventId === 'daimiel') {
+            const mainGuest = formData.persons.find(person => person.es_principal);
+            const encodedName = encodeURIComponent(mainGuest && mainGuest.nombre_apellidos ? mainGuest.nombre_apellidos : '');
+
+            if (mainGuest && mainGuest.nombre_apellidos) {
+                storeDaimielMainGuest(mainGuest.nombre_apellidos);
+                setBusNamePrefill(mainGuest.nombre_apellidos);
+                updateBusFlowHint();
+            }
+
+            const goToBusBtn = document.getElementById('go-to-bus-btn-daimiel');
+            if (goToBusBtn) {
+                goToBusBtn.addEventListener('click', () => {
+                    window.location.href = encodedName ? `autobuses.html?nombre=${encodedName}` : 'autobuses.html';
+                }, { once: true });
+            }
+        }
         
     } catch (error) {
         console.error('Error al enviar:', error);
-        alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+        alert('Hubo un error al enviar el formulario. Por favor, intÃ©ntalo de nuevo.');
         
-        // Rehabilitar botón
+        // Rehabilitar botÃ³n
+        submitBtn.disabled = false;
+        buttonText.style.display = 'inline';
+        buttonLoading.style.display = 'none';
+    }
+}
+
+function collectBusFormData(form) {
+    const nameInput = form.querySelector('#bus-name');
+    const routeInputs = form.querySelectorAll('input[name="bus-route"]:checked');
+    const consentInput = form.querySelector('#consent-bus');
+
+    const selectedRoutes = Array.from(routeInputs).map(input => ({
+        id: input.value,
+        label: input.getAttribute('data-route-label') || input.value
+    }));
+
+    return {
+        nombre_apellidos: nameInput ? nameInput.value.trim() : '',
+        routeIds: selectedRoutes.map(route => route.id),
+        trayectos: selectedRoutes.map(route => route.label),
+        consentimiento: Boolean(consentInput && consentInput.checked)
+    };
+}
+
+function validateBusForm(formData) {
+    const errors = {};
+
+    if (!formData.nombre_apellidos) {
+        errors.name = 'El nombre es obligatorio';
+    } else {
+        const nameParts = formData.nombre_apellidos.split(/\s+/);
+        if (nameParts.length < 2) {
+            errors.name = 'Introduce nombre y apellidos completos';
+        }
+    }
+
+    if (!formData.trayectos.length) {
+        errors.routes = 'Selecciona al menos un trayecto';
+    }
+
+    if (!formData.consentimiento) {
+        errors.consent = 'Debes aceptar el tratamiento de datos';
+    }
+
+    return errors;
+}
+
+function showBusErrors(errors) {
+    const nameError = document.getElementById('error-bus-name');
+    const routesError = document.getElementById('error-bus-routes');
+    const consentError = document.getElementById('error-consent-bus');
+    const nameInput = document.getElementById('bus-name');
+    const consentInput = document.getElementById('consent-bus');
+
+    if (nameError) nameError.textContent = '';
+    if (routesError) routesError.textContent = '';
+    if (consentError) consentError.textContent = '';
+    if (nameInput) nameInput.classList.remove('error');
+    if (consentInput) consentInput.classList.remove('error');
+
+    if (errors.name) {
+        if (nameError) nameError.textContent = errors.name;
+        if (nameInput) nameInput.classList.add('error');
+    }
+
+    if (errors.routes && routesError) {
+        routesError.textContent = errors.routes;
+    }
+
+    if (errors.consent) {
+        if (consentError) consentError.textContent = errors.consent;
+        if (consentInput) consentInput.classList.add('error');
+    }
+}
+
+async function handleBusFormSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const submitBtn = form.querySelector('.submit-button');
+    const buttonText = submitBtn.querySelector('.button-text');
+    const buttonLoading = submitBtn.querySelector('.button-loading');
+
+    const honeypot = form.querySelector('#website-bus');
+    if (honeypot && honeypot.value) {
+        return;
+    }
+
+    const formData = collectBusFormData(form);
+    const errors = validateBusForm(formData);
+    if (Object.keys(errors).length > 0) {
+        showBusErrors(errors);
+        const firstErrorField = form.querySelector('.error') || document.getElementById('error-bus-routes');
+        if (firstErrorField) {
+            firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+    }
+
+    showBusErrors({});
+
+    submitBtn.disabled = true;
+    buttonText.style.display = 'none';
+    buttonLoading.style.display = 'inline-flex';
+
+    try {
+        const payload = {
+            tipo_formulario: 'bus',
+            nombre_apellidos: formData.nombre_apellidos,
+            trayectos: formData.trayectos,
+            parada_pago_vicario_daimiel_ciudad_real: formData.routeIds.includes('pv-daimiel-cr') ? 'Si' : 'No',
+            parada_daimiel_pago_vicario_fin_ceremonia: formData.routeIds.includes('daimiel-pv-fin') ? 'Si' : 'No',
+            parada_0300_pago_vicario_daimiel_ciudad_real: formData.routeIds.includes('pv-daimiel-cr-0300') ? 'Si' : 'No',
+            parada_0600_pago_vicario_daimiel_ciudad_real: formData.routeIds.includes('pv-daimiel-cr-0600') ? 'Si' : 'No',
+            consentimiento: formData.consentimiento ? 'Si' : 'No',
+            origen_url: window.location.href,
+            user_agent: navigator.userAgent
+        };
+
+        await fetch(CONFIG.BUS_ENDPOINT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        form.style.display = 'none';
+        const successMsg = document.getElementById('success-message-bus');
+        if (successMsg) {
+            successMsg.style.display = 'block';
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        updateBusFlowHint();
+    } catch (error) {
+        console.error('Error al enviar formulario de autobus:', error);
+        alert('Hubo un error al enviar el formulario de autobus. Intentalo de nuevo.');
         submitBtn.disabled = false;
         buttonText.style.display = 'inline';
         buttonLoading.style.display = 'none';
@@ -630,7 +930,7 @@ function downloadCalendar(eventId) {
     const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Boda María Phia & Javier//ES',
+        'PRODID:-//Boda MarÃ­a Phia & Javier//ES',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
@@ -645,7 +945,7 @@ function downloadCalendar(eventId) {
         'SEQUENCE:0',
         'BEGIN:VALARM',
         'TRIGGER:-P1D',
-        'DESCRIPTION:Recordatorio: Boda mañana',
+        'DESCRIPTION:Recordatorio: Boda maÃ±ana',
         'ACTION:DISPLAY',
         'END:VALARM',
         'END:VEVENT',
@@ -660,3 +960,5 @@ function downloadCalendar(eventId) {
     link.click();
     document.body.removeChild(link);
 }
+
+

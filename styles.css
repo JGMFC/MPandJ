@@ -390,6 +390,28 @@ section {
     background: url('arequipa.png') center/cover no-repeat;
 }
 
+.cta-bus {
+    background: linear-gradient(145deg, rgba(158, 193, 213, 0.95) 0%, rgba(153, 166, 111, 0.95) 100%);
+    justify-content: center;
+    text-align: center;
+    gap: 0.35rem;
+}
+
+.cta-bus-label {
+    font-family: var(--font-serif-alt);
+    font-size: 1.5rem;
+    color: white;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.cta-bus-subtitle {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+}
+
 .cta-button::before {
     content: none;
 }
@@ -459,6 +481,12 @@ section {
 .arequipa-full {
     background: 
         linear-gradient(180deg, rgba(250, 248, 244, 0.98) 0%, rgba(250, 248, 244, 0.96) 100%),
+        url('logo.png') center/cover no-repeat;
+}
+
+.bus-full {
+    background:
+        linear-gradient(180deg, rgba(250, 248, 244, 0.98) 0%, rgba(240, 241, 237, 0.96) 100%),
         url('logo.png') center/cover no-repeat;
 }
 
@@ -1097,12 +1125,114 @@ section {
     border: 3px solid rgba(158, 193, 213, 0.3);
 }
 
+.bus-full .rsvp-inline {
+    border: 3px solid rgba(153, 166, 111, 0.3);
+}
+
 .daimiel-full .submit-button {
     background: linear-gradient(135deg, var(--color-spain) 0%, var(--color-orange) 100%);
 }
 
 .arequipa-full .submit-button {
     background: linear-gradient(135deg, var(--color-peru) 0%, var(--color-green) 100%);
+}
+
+.bus-full .submit-button {
+    background: linear-gradient(135deg, var(--color-green) 0%, var(--color-blue-dark) 100%);
+}
+
+.bus-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.bus-details-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(250, 248, 244, 0.8) 100%);
+    border: 2px solid rgba(153, 166, 111, 0.25);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+}
+
+.bus-flow-hint {
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(220, 134, 54, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.bus-flow-hint.hint-complete {
+    border-color: rgba(153, 166, 111, 0.35);
+    background: rgba(240, 248, 238, 0.85);
+}
+
+.bus-flow-text {
+    margin: 0;
+    color: var(--color-green-darker);
+    font-family: var(--font-serif);
+    line-height: 1.45;
+}
+
+.bus-details-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--color-green-darker);
+}
+
+.bus-details-list li {
+    margin-bottom: 0.55rem;
+    line-height: 1.5;
+}
+
+.gift-section {
+    margin-top: 0.75rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: linear-gradient(140deg, rgba(243, 214, 193, 0.4) 0%, rgba(196, 223, 233, 0.35) 100%);
+    border: 2px dashed rgba(220, 134, 54, 0.45);
+}
+
+.gift-text {
+    font-family: var(--font-serif);
+    color: var(--color-green-dark);
+    margin-bottom: 1rem;
+}
+
+.gift-account-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 14px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.gift-account-label {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--color-green);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.gift-account-number {
+    font-family: var(--font-serif-alt);
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    color: var(--color-green-darker);
+    word-break: break-word;
+    margin: 0;
+}
+
+.gift-copy-feedback {
+    min-height: 1.1rem;
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--color-green-dark);
 }
 
 /* ============================================
@@ -1461,6 +1591,29 @@ section {
     flex-direction: column;
     gap: 0.35rem;
     margin-left: 0.75rem;
+}
+
+.bus-info-point {
+    margin-top: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 10px;
+    background: rgba(196, 223, 233, 0.18);
+    border-left: 3px solid rgba(123, 129, 87, 0.55);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.bus-meta {
+    font-family: var(--font-serif);
+    font-size: 0.83rem;
+    color: var(--color-green-dark);
+    line-height: 1.45;
+}
+
+.bus-meta strong {
+    color: var(--color-green-darker);
+    font-weight: 600;
 }
 
 .bus-option-text strong {
@@ -2006,6 +2159,10 @@ section {
     .add-companion-btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .gift-section {
+        padding: 1.1rem;
     }
 }
 

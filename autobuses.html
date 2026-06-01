@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirmación de autobuses - Maria Phia y Javier">
+    <title>Autobuses | Maria Phia & Javier</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.PNG">
+    <link rel="apple-touch-icon" href="logo.PNG">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="autobuses.css">
+</head>
+<body>
+    <main class="bus-page">
+        <section class="hero-block">
+            <h1 class="hero-title">¡Qué emoción!</h1>
+            <p class="hero-subtitle">Gracias por confirmar tu asistencia. A continuación encontrarás los detalles del gran día. Estamos ultimando los preparativos, así que nos ayudaría mucho que respondieras a las siguientes preguntas.</p>
+        </section>
+
+        <section class="itinerary" aria-label="Itinerario de autobuses">
+            <h2>Itinerario de nuestro gran día</h2>
+            <div class="itinerary-track" id="itinerary-track"></div>
+        </section>
+
+        <section class="wizard" id="wizard">
+            <h2>Confirma tu traslado</h2>
+
+            <article class="panel" id="flow-card">
+                <span class="step-tag" id="flow-progress">Paso 1 de 3</span>
+
+                <div class="flow-step" id="step-stay">
+                    <h3>¿Dónde te hospedas?</h3>
+                    <div class="decision-buttons" id="stay-options">
+                        <button type="button" class="choice-btn" data-lodging="ciudad_real">Ciudad Real</button>
+                        <button type="button" class="choice-btn" data-lodging="daimiel">Daimiel</button>
+                        <button type="button" class="choice-btn" data-lodging="otros">Otros</button>
+                    </div>
+                    <p id="stay-error" class="error"></p>
+                </div>
+
+                <div class="flow-step hidden" id="step-need">
+                    <h3>¿Vas a necesitar autobús?</h3>
+                    <div class="decision-buttons">
+                        <button type="button" id="need-bus-yes" class="primary-btn">Sí, necesito</button>
+                        <button type="button" id="need-bus-no" class="secondary-btn">No, gracias</button>
+                    </div>
+                    <div class="flow-actions">
+                        <button type="button" id="back-to-stay" class="secondary-btn">Atrás</button>
+                    </div>
+                </div>
+
+                <div class="flow-step hidden" id="step-stops">
+                    <div id="stop-question-flow">
+                        <h3>Y para acabar</h3>
+                        <p id="lodging-hint">Debes seleccionar las paradas en orden consecutivo.</p>
+
+                        <article class="stop-item" id="single-stop-view">
+                            <h4 id="stop-question-title"></h4>
+                            <p id="stop-question-direction"></p>
+                            <p id="stop-question-time"></p>
+                            <p id="stop-question-info"></p>
+                        </article>
+
+                        <div id="paired-stop-view" class="hidden">
+                            <div class="stop-choice-grid">
+                                <article class="stop-choice-card" id="pair-stop-1">
+                                    <h4 id="pair-stop-1-title"></h4>
+                                    <p id="pair-stop-1-direction"></p>
+                                    <p id="pair-stop-1-time"></p>
+                                    <p id="pair-stop-1-info"></p>
+                                    <button type="button" class="primary-btn pair-select-btn" id="pair-stop-1-select">Elegir esta</button>
+                                </article>
+
+                                <article class="stop-choice-card" id="pair-stop-2">
+                                    <h4 id="pair-stop-2-title"></h4>
+                                    <p id="pair-stop-2-direction"></p>
+                                    <p id="pair-stop-2-time"></p>
+                                    <p id="pair-stop-2-info"></p>
+                                    <button type="button" class="primary-btn pair-select-btn" id="pair-stop-2-select">Elegir esta</button>
+                                </article>
+                            </div>
+                            <div class="flow-actions paired-stop-actions">
+                                <button type="button" class="secondary-btn" id="pair-stop-none">No quiero autobús de vuelta</button>
+                            </div>
+                        </div>
+
+                        <div class="decision-buttons" id="single-stop-actions">
+                            <button type="button" id="stop-answer-yes" class="primary-btn">Sí, reservar</button>
+                            <button type="button" id="stop-answer-no" class="secondary-btn">No, gracias</button>
+                        </div>
+
+                        <p id="stop-error" class="error"></p>
+
+                        <div class="flow-actions">
+                            <button type="button" id="stop-back" class="secondary-btn">Atrás</button>
+                        </div>
+                    </div>
+
+                    <div id="stop-final-actions" class="hidden">
+                        <h3>¿Quién necesita estas plazas?</h3>
+                        <p class="final-step-hint">Añade los nombres uno a uno y guardaremos las mismas opciones para todos.</p>
+                        <div class="name-manager">
+                            <div class="name-entry-row">
+                                <input type="text" id="bus-name-entry" placeholder="Nombre y apellidos">
+                                <button type="button" id="add-bus-name" class="secondary-btn">Añadir</button>
+                            </div>
+                            <div class="guest-names-list" id="bus-names-list" aria-live="polite"></div>
+                            <p id="name-error" class="error"></p>
+                        </div>
+                        <div class="mini-summary" id="mini-summary">
+                            <h4>Resumen de vuestro traslado</h4>
+                            <p><strong>Nombres:</strong> <span id="summary-name"></span></p>
+                            <p><strong>Hospedaje:</strong> <span id="summary-lodging"></span></p>
+                            <p><strong>Paradas:</strong> <span id="summary-routes"></span></p>
+                        </div>
+                        <p id="form-error" class="error"></p>
+                        <button type="button" id="confirm-bus" class="primary-btn">Confirmar autobuses</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel hidden" id="bus-success">
+                <h3>Autobuses confirmados</h3>
+                <p>Perfecto, ya hemos guardado tus paradas.</p>
+            </article>
+
+            <section class="panel gift" id="gift-section">
+                <p>Para nosotros, lo más importante es compartir este día contigo. No necesitas nada más que venir a disfrutar. Sin embargo, si te apetece tener un detalle con nosotros, puedes hacerlo a través de cualquiera de estas vías:</p>
+                <div class="gift-box gift-methods">
+                    <article class="gift-method">
+                        <span>Bizum</span>
+                        <strong>690 14 36 66 (Javier Garcia Muñoz)</strong>
+                        <button type="button" class="secondary-btn copy-method" data-copy="690143666" data-label="Bizum">Copiar Bizum</button>
+                    </article>
+
+                    <article class="gift-method">
+                        <span>IBAN</span>
+                        <strong>ES96 1583 0001 1191 5956 4647</strong>
+                        <small>Beneficiario: J G Fernandez-Calvillo &amp; M C Tejada</small>
+                        <button type="button" class="secondary-btn copy-method" data-copy="ES9615830001119159564647" data-label="IBAN">Copiar IBAN</button>
+                    </article>
+
+                    <small id="copy-feedback"></small>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="itinerario.shared.js"></script>
+    <script src="autobuses.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

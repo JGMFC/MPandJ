@@ -14,7 +14,7 @@ const CONFIG = {
         {
             time: '17:00',
             title: 'Ceremonia Religiosa',
-            description: 'Iglesia de San Pedro, Daimiel',
+            description: '',
             mapsQuery: 'Iglesia de San Pedro, Daimiel, Ciudad Real, España'
         },
         {
@@ -32,7 +32,7 @@ const CONFIG = {
         {
             time: '21:00',
             title: 'Cena',
-            description: 'Banquete nupcial en Pago del Vicario',
+            description: '',
             mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
         },
         {
