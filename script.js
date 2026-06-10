@@ -1,5 +1,5 @@
 ﻿// ============================================
-// CONFIGURACIÃ“N
+// CONFIGURACIÓN
 // ============================================
 
 const CONFIG = {
@@ -10,54 +10,54 @@ const CONFIG = {
     // URL de la comunidad de WhatsApp
     WHATSAPP_COMMUNITY_URL: 'https://chat.whatsapp.com/DZNBouDymGLELNyQmrYudh',
     
-    // Itinerario Daimiel (editable fÃ¡cilmente)
+    // Itinerario Daimiel (editable fácilmente)
     itinerarioDaimiel: [
         {
             time: '18:00',
             title: 'Ceremonia Religiosa',
             description: 'Iglesia de San Pedro, Daimiel',
-            mapsQuery: 'Iglesia de San Pedro, Daimiel, Ciudad Real, EspaÃ±a'
+            mapsQuery: 'Iglesia de San Pedro, Daimiel, Ciudad Real, España'
         },
         {
             time: '19:00',
-            title: 'Traslado a CelebraciÃ³n',
+            title: 'Traslado a Celebración',
             description: 'Viaje hacia Bodega Pago del Vicario',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
         },
         {
             time: '19:30',
-            title: 'CÃ³ctel de Bienvenida',
+            title: 'Cóctel de Bienvenida',
             description: 'Aperitivos y bebidas en la bodega',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
         },
         {
             time: '21:00',
             title: 'Cena',
             description: '',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
         },
         {
             time: '23:00',
-            title: 'Baile y CelebraciÃ³n',
-            description: 'Â¡Fiesta hasta el amanecer!',
-            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, EspaÃ±a'
+            title: 'Baile y Celebración',
+            description: '¡Fiesta hasta el amanecer!',
+            mapsQuery: 'Bodega Pago del Vicario, Ciudad Real, España'
         }
     ],
     
     // Eventos para calendario
     eventos: {
         daimiel: {
-            title: 'Boda MarÃ­a Phia & Javier - Daimiel',
-            location: 'Iglesia de San Pedro, Daimiel, EspaÃ±a',
-            description: 'Ceremonia religiosa y celebraciÃ³n en Bodega Pago del Vicario',
+            title: 'Boda María Phia & Javier - Daimiel',
+            location: 'Iglesia de San Pedro, Daimiel, España',
+            description: 'Ceremonia religiosa y celebración en Bodega Pago del Vicario',
             date: '2026-07-04',
             time: '18:00',
             duration: 6 // horas
         },
         arequipa: {
-            title: 'Boda MarÃ­a Phia & Javier - Arequipa',
-            location: 'Arequipa, PerÃº',
-            description: 'CelebraciÃ³n en la ciudad blanca',
+            title: 'Boda María Phia & Javier - Arequipa',
+            location: 'Arequipa, Perú',
+            description: 'Celebración en la ciudad blanca',
             date: '2026-12-19',
             time: '18:00',
             duration: 6
@@ -66,7 +66,7 @@ const CONFIG = {
 };
 
 // ============================================
-// INICIALIZACIÃ“N
+// INICIALIZACIÓN
 // ============================================
 
 if (window.DAIMIEL_ITINERARIO && Array.isArray(window.DAIMIEL_ITINERARIO)) {
@@ -95,7 +95,7 @@ function initTimeline() {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
         
-        // Generar botÃ³n de mapa si existe mapsQuery o mapsUrl
+        // Generar botón de mapa si existe mapsQuery o mapsUrl
         let mapsButton = '';
         if (item.mapsQuery || item.mapsUrl) {
             const mapsLink = item.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.mapsQuery)}`;
@@ -160,7 +160,7 @@ function drawTimelinePath() {
         const controlX2 = curr.x;
         const controlY2 = midY;
         
-        // AÃ±adir curva bezier
+        // Añadir curva bezier
         pathD += ` C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${curr.x} ${curr.y}`;
     }
     
@@ -291,7 +291,7 @@ function addCompanion(eventId) {
     // Limitar a mÃ¡ximo 1 acompaÃ±ante
     const currentCompanions = container.querySelectorAll('.companion-card').length;
     if (currentCompanions >= 1) {
-        alert('Solo puedes aÃ±adir 1 acompaÃ±ante como mÃ¡ximo.');
+        alert('Solo puedes añadir 1 acompañante como máximo.');
         return;
     }
     
@@ -320,7 +320,7 @@ function addCompanion(eventId) {
         </div>
         
         <div class="form-group form-group-phone">
-            <label for="phone-${eventId}-${index}">TelÃ©fono <span class="required">*</span></label>
+            <label for="phone-${eventId}-${index}">Teléfono <span class="required">*</span></label>
             <div class="phone-input-group">
                 <select id="phone-prefix-${eventId}-${index}" name="phone-prefix-${index}" required data-person-index="${index}">
                     <option value="+51" data-flag="ðŸ‡µðŸ‡ª">ðŸ‡µðŸ‡ª +51</option>
@@ -367,7 +367,7 @@ function removeCompanion(eventId, index) {
             companionCard.remove();
             renumberCompanions(eventId);
             
-            // Mostrar el botÃ³n de aÃ±adir si hay menos de 1 acompaÃ±ante
+            // Mostrar el botón de añadir si hay menos de 1 acompañante
             const container = document.getElementById(`companions-container-${eventId}`);
             const addButton = document.getElementById(`add-companion-${eventId}`);
             if (container.querySelectorAll('.companion-card').length < 1 && addButton) {
@@ -435,12 +435,12 @@ function initGiftAccountActions() {
                 document.body.removeChild(fallbackInput);
             }
 
-            feedback.textContent = 'Numero de cuenta copiado.';
+            feedback.textContent = 'Número de cuenta copiado.';
             setTimeout(() => {
                 feedback.textContent = '';
             }, 2500);
         } catch (error) {
-            feedback.textContent = 'No se pudo copiar automaticamente.';
+            feedback.textContent = 'No se pudo copiar automáticamente.';
         }
     });
 }
@@ -461,7 +461,7 @@ function initDeepLinkNavigation() {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
-    // Esperar a que termine de montar el layout inicial para un scroll mÃ¡s estable.
+    // Esperar a que termine de montar el layout inicial para un scroll más estable.
     window.requestAnimationFrame(() => {
         window.requestAnimationFrame(scrollToTarget);
     });
@@ -571,7 +571,7 @@ function collectFormData(form, eventId) {
         });
     });
     
-    // Recopilar opciones de autobÃºs (solo para Daimiel)
+    // Recopilar opciones de autobús (solo para Daimiel)
     let busOptions = [];
     if (eventId === 'daimiel') {
         const busCheckboxes = form.querySelectorAll('[name="bus"]:checked');
@@ -608,11 +608,11 @@ function validateForm(formData, eventId) {
             }
         }
         
-        // TelÃ©fono obligatorio
+        // Teléfono obligatorio
         if (!person.telefono) {
-            errors[`phone-${personIndex}`] = 'El telÃ©fono es obligatorio';
+            errors[`phone-${personIndex}`] = 'El teléfono es obligatorio';
         } else if (!/^\d+$/.test(person.telefono)) {
-            errors[`phone-${personIndex}`] = 'El telÃ©fono solo puede contener nÃºmeros';
+            errors[`phone-${personIndex}`] = 'El teléfono solo puede contener números';
         }
     });
     
@@ -705,13 +705,13 @@ async function handleFormSubmit(e, eventId) {
     buttonLoading.style.display = 'inline-flex';
     
     try {
-        // Preparar payload: array de personas + opciones de autobÃºs
+        // Preparar payload: array de personas + opciones de autobús
         const payload = {
             evento: eventId,
             busOptions: formData.busOptions || [],
             personas: formData.persons.map(person => ({
                 ...person,
-                consentimiento: formData.consent ? 'SÃ­' : 'No',
+                consentimiento: formData.consent ? 'Sí' : 'No',
                 origen_url: window.location.href,
                 user_agent: navigator.userAgent
             }))
@@ -764,7 +764,7 @@ async function handleFormSubmit(e, eventId) {
         
     } catch (error) {
         console.error('Error al enviar:', error);
-        alert('Hubo un error al enviar el formulario. Por favor, intÃ©ntalo de nuevo.');
+        alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
         
         // Rehabilitar botÃ³n
         submitBtn.disabled = false;
@@ -930,7 +930,7 @@ function downloadCalendar(eventId) {
     const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Boda MarÃ­a Phia & Javier//ES',
+        'PRODID:-//Boda María Phia & Javier//ES',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
@@ -945,7 +945,7 @@ function downloadCalendar(eventId) {
         'SEQUENCE:0',
         'BEGIN:VALARM',
         'TRIGGER:-P1D',
-        'DESCRIPTION:Recordatorio: Boda maÃ±ana',
+        'DESCRIPTION:Recordatorio: Boda mañana',
         'ACTION:DISPLAY',
         'END:VALARM',
         'END:VEVENT',
