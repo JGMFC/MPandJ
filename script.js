@@ -47,7 +47,7 @@ const CONFIG = {
     // Eventos para calendario
     eventos: {
         daimiel: {
-            title: 'Boda María Phia & Javier - Daimiel',
+            title: 'Boda Maria Phia & Javier - Daimiel',
             location: 'Iglesia de San Pedro, Daimiel, España',
             description: 'Ceremonia religiosa y celebración en Bodega Pago del Vicario',
             date: '2026-07-04',
@@ -55,7 +55,7 @@ const CONFIG = {
             duration: 6 // horas
         },
         arequipa: {
-            title: 'Boda María Phia & Javier - Arequipa',
+            title: 'Boda Maria Phia & Javier - Arequipa',
             location: 'Arequipa, Perú',
             description: 'Celebración en la ciudad blanca',
             date: '2026-12-19',
@@ -929,7 +929,7 @@ function downloadCalendar(eventId) {
     const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Boda María Phia & Javier//ES',
+        'PRODID:-//Boda Maria Phia & Javier//ES',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
