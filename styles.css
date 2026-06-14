@@ -490,6 +490,19 @@ section {
         url('logo.png') center/cover no-repeat;
 }
 
+.regalo-section {
+    min-height: auto;
+    background:
+        linear-gradient(180deg, rgba(250, 248, 244, 0.98) 0%, rgba(250, 245, 240, 0.97) 100%),
+        url('logo.png') center/cover no-repeat;
+    padding: var(--spacing-xl) 0;
+}
+
+.regalo-section .rsvp-inline {
+    border: 3px solid rgba(220, 134, 54, 0.25);
+    margin-top: 0;
+}
+
 /* Event Header */
 .event-header {
     text-align: center;
@@ -1233,6 +1246,27 @@ section {
     font-family: var(--font-serif);
     font-size: 0.9rem;
     color: var(--color-green-dark);
+}
+
+.gift-copy-button {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+}
+
+.gift-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.gift-bizum-box {
+    border-left: 3px solid rgba(0, 112, 243, 0.2);
+}
+
+@media (max-width: 560px) {
+    .gift-options {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ============================================

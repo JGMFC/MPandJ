@@ -413,35 +413,34 @@ function initFormHandlers() {
 }
 
 function initGiftAccountActions() {
-    const copyButton = document.getElementById('gift-copy-btn');
-    const accountNumber = document.getElementById('gift-account-number');
-    const feedback = document.getElementById('gift-copy-feedback');
+    document.querySelectorAll('[data-copy-target]').forEach(btn => {
+        const target = document.getElementById(btn.dataset.copyTarget);
+        const feedback = btn.dataset.copyFeedback ? document.getElementById(btn.dataset.copyFeedback) : null;
+        if (!target) return;
 
-    if (!copyButton || !accountNumber || !feedback) return;
+        btn.addEventListener('click', async () => {
+            const textToCopy = target.textContent.replace(/\s+/g, '').trim();
+            if (!textToCopy) return;
 
-    copyButton.addEventListener('click', async () => {
-        const textToCopy = accountNumber.textContent.trim();
-        if (!textToCopy) return;
-
-        try {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                await navigator.clipboard.writeText(textToCopy);
-            } else {
-                const fallbackInput = document.createElement('input');
-                fallbackInput.value = textToCopy;
-                document.body.appendChild(fallbackInput);
-                fallbackInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(fallbackInput);
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(textToCopy);
+                } else {
+                    const input = document.createElement('input');
+                    input.value = textToCopy;
+                    document.body.appendChild(input);
+                    input.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(input);
+                }
+                if (feedback) {
+                    feedback.textContent = '¡Copiado!';
+                    setTimeout(() => { feedback.textContent = ''; }, 2500);
+                }
+            } catch (e) {
+                if (feedback) feedback.textContent = 'No se pudo copiar.';
             }
-
-            feedback.textContent = 'Número de cuenta copiado.';
-            setTimeout(() => {
-                feedback.textContent = '';
-            }, 2500);
-        } catch (error) {
-            feedback.textContent = 'No se pudo copiar automáticamente.';
-        }
+        });
     });
 }
 

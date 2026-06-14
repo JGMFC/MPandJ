@@ -549,6 +549,47 @@ Si tu invitación incluye a más de una persona, agradecemos confirmar la asiste
         </div>
     </section>
 
+    <!-- ============================================
+         SECCIÓN: REGALO
+         ============================================ -->
+    <section class="event-full-section regalo-section" id="regalo">
+        <div class="container">
+            <div class="rsvp-inline">
+                <div class="gift-section">
+                    <h4 class="attendees-title">Si te apetece hacernos un regalo</h4>
+                    <p class="gift-text">Tu presencia es lo más importante, pero si quieres tener un detalle con nosotros puedes hacerlo aquí:</p>
+                    <div class="gift-options">
+                        <div class="gift-account-box">
+                            <span class="gift-account-label">Número de cuenta (IBAN)</span>
+                            <p class="gift-account-number" id="regalo-iban">ES96 1583 0001 1191 5956 4647</p>
+                            <p class="gift-beneficiary">Beneficiario: Javier Garcia Munoz Fernandez Calvillo &amp; Maria Phia Calderon Tejada</p>
+                            <button type="button" class="action-button calendar-button gift-copy-button" data-copy-target="regalo-iban" data-copy-feedback="regalo-iban-feedback">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Copiar IBAN
+                            </button>
+                            <span class="gift-copy-feedback" id="regalo-iban-feedback" aria-live="polite"></span>
+                        </div>
+                        <div class="gift-account-box gift-bizum-box">
+                            <span class="gift-account-label">Bizum</span>
+                            <p class="gift-account-number" id="regalo-bizum">690 143 666</p>
+                            <button type="button" class="action-button calendar-button gift-copy-button" data-copy-target="regalo-bizum" data-copy-feedback="regalo-bizum-feedback">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Copiar Bizum
+                            </button>
+                            <span class="gift-copy-feedback" id="regalo-bizum-feedback" aria-live="polite"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="footer-separation">
         <svg width="100%" height="2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <line x1="0" y1="1" x2="100%" y2="1" stroke="#DC8636" stroke-width="1" opacity="0.3"/>
@@ -706,14 +747,35 @@ Si tu invitación incluye a más de una persona, agradecemos confirmar la asiste
                 <div class="gift-section">
                     <h4 class="attendees-title">Si te apetece hacernos un regalo</h4>
                     <p class="gift-text">Tu presencia es lo más importante, pero si quieres tener un detalle con nosotros puedes hacerlo aquí:</p>
-                    <div class="gift-account-box">
-                        <span class="gift-account-label">Número de cuenta</span>
-                        <p class="gift-account-number" id="gift-account-number">ES96 1583 0001 1191 5956 4647</p>
-                        <p class="gift-beneficiary">Beneficiario: Javier Garcia Munoz Fernandez Calvillo &amp; Maria Phia Calderon Tejada</p>
-                        <button type="button" class="action-button calendar-button" id="gift-copy-btn">Copiar número de cuenta</button>
-                        <span class="gift-copy-feedback" id="gift-copy-feedback" aria-live="polite"></span>
+                    <div class="gift-options">
+                        <div class="gift-account-box">
+                            <span class="gift-account-label">Número de cuenta (IBAN)</span>
+                            <p class="gift-account-number" id="bus-gift-iban">ES96 1583 0001 1191 5956 4647</p>
+                            <p class="gift-beneficiary">Beneficiario: Javier Garcia Munoz Fernandez Calvillo &amp; Maria Phia Calderon Tejada</p>
+                            <button type="button" class="action-button calendar-button gift-copy-button" data-copy-target="bus-gift-iban" data-copy-feedback="bus-gift-iban-feedback">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Copiar IBAN
+                            </button>
+                            <span class="gift-copy-feedback" id="bus-gift-iban-feedback" aria-live="polite"></span>
+                        </div>
+                        <div class="gift-account-box gift-bizum-box">
+                            <span class="gift-account-label">Bizum</span>
+                            <p class="gift-account-number" id="bus-gift-bizum">690 143 666</p>
+                            <button type="button" class="action-button calendar-button gift-copy-button" data-copy-target="bus-gift-bizum" data-copy-feedback="bus-gift-bizum-feedback">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Copiar Bizum
+                            </button>
+                            <span class="gift-copy-feedback" id="bus-gift-bizum-feedback" aria-live="polite"></span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
