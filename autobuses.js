@@ -676,10 +676,10 @@ function bindConfirm() {
         btn.disabled = true;
         btn.textContent = 'Enviando...';
 
-        const payload = {
+        const sharedPayload = {
             tipo_formulario: 'bus',
             nombres_apellidos: data.names,
-            nombre_apellidos: data.names.join(' · '),
+            grupo_nombres_apellidos: data.names.join(' · '),
             hospedaje: LODGING_LABELS[data.lodging] || data.lodging,
             trayectos: data.routeLabels,
             parada_pago_vicario_daimiel_ciudad_real: data.routeIds.includes('pv-daimiel-cr') ? 'Sí' : 'No',
@@ -692,12 +692,20 @@ function bindConfirm() {
         };
 
         try {
-            await fetch(BUS_CONFIG.ENDPOINT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
+            for (const name of data.names) {
+                const payload = {
+                    ...sharedPayload,
+                    nombre_apellidos: name,
+                    nombres_apellidos: [name]
+                };
+
+                await fetch(BUS_CONFIG.ENDPOINT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            }
 
             resetBusForm();
             successPanel.classList.remove('hidden');
