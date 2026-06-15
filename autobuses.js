@@ -13,8 +13,8 @@ const STOP_QUESTIONS = [
         id: 'pv-daimiel-cr',
         label: 'Ciudad Real a Daimiel',
         title: 'Ciudad Real -> Daimiel -- Camino a la ceremonia',
-        direction: 'Salida desde Ciudad Real y llegada a Daimiel. El punto de recogida está aquí: <a href="https://maps.app.goo.gl/9R43tYi7C61f97Eq9?g_st=aw" target="_blank" rel="noopener noreferrer">Google Maps</a>.',
-        time: '17:20 h.',
+        direction: 'Salida desde Ciudad Real y llegada a Daimiel. El punto de recogida está aquí: <a href="https://www.google.com/maps/place/13001+Ciudad+Real/@38.9826381,-3.9259879,17z/data=!3m1!4b1!4m6!3m5!1s0xd6bc33fc4cee7d5:0x6ae008fffdabf57c!8m2!3d38.9826381!4d-3.9259879!16s%2Fg%2F11c62wwlc8!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Google Maps</a>.',
+        time: '16:50 h.',
         info: 'Te recomendamos llegar 10 minutos antes.'
     },
     {
