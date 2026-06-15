@@ -113,14 +113,18 @@ function prefillName() {
     const fromQuery = params.get('nombre') || '';
 
     if (fromQuery) {
-        fromQuery
-            .split(/\r?\n/)
-            .map(name => name.trim())
-            .filter(Boolean)
+        splitGuestNameInput(fromQuery)
             .forEach(name => addGuestName(name, false));
     }
 
     renderGuestNames();
+}
+
+function splitGuestNameInput(value) {
+    return String(value || '')
+        .split(/\r?\n|\s*[·;,|]\s*/)
+        .map(name => name.trim())
+        .filter(Boolean);
 }
 
 function getGuestNames() {
@@ -166,15 +170,15 @@ function escapeHtml(value) {
 }
 
 function addGuestName(rawName, syncInput = true) {
-    const name = String(rawName || '').trim();
+    const names = splitGuestNameInput(rawName);
     const entryInput = document.getElementById('bus-name-entry');
     const nameErrorEl = document.getElementById('name-error');
 
-    if (!name) {
+    if (!names.length) {
         return false;
     }
 
-    guestNames.push(name);
+    guestNames.push(...names);
 
     if (entryInput && syncInput) {
         entryInput.value = '';
