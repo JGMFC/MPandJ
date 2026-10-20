@@ -121,7 +121,7 @@ function initTimeline() {
         timelineContainer.appendChild(timelineItem);
     });
     
-    // Generar el camino despuÃ©s de crear las tarjetas
+    // Generar el camino después de crear las tarjetas
     setTimeout(() => drawTimelinePath(), 100);
 }
 
@@ -139,7 +139,7 @@ function drawTimelinePath() {
         const rect = content.getBoundingClientRect();
         const containerRect = timelineContainer.getBoundingClientRect();
         
-        // PosiciÃ³n relativa al contenedor
+        // Posición relativa al contenedor
         const x = rect.left - containerRect.left + rect.width / 2;
         const y = rect.top - containerRect.top + rect.height / 2;
         
@@ -174,7 +174,7 @@ function drawTimelinePath() {
         const pathElement = existingSvg.querySelector('.path-line');
         pathElement.setAttribute('d', pathD);
         
-        // Calcular longitud del path para animaciÃ³n
+        // Calcular longitud del path para animación
         const pathLength = pathElement.getTotalLength();
         pathElement.style.strokeDasharray = pathLength;
         pathElement.style.strokeDashoffset = pathLength;
@@ -211,7 +211,7 @@ function initScrollAnimations() {
         observer.observe(item);
     });
     
-    // Observar tÃ­tulos con efecto de pintado
+    // Observar títulos con efecto de pintado
     const titleObserverOptions = {
         threshold: 0.5,
         rootMargin: '0px'
@@ -263,7 +263,7 @@ function initSmoothScroll() {
 }
 
 // ============================================
-// GESTIÃ“N DE ACOMPAÃ‘ANTES
+// GESTIÓN DE ACOMPAÑANTES
 // ============================================
 
 let companionCounters = {
@@ -288,7 +288,7 @@ function initCompanionHandlers() {
 function addCompanion(eventId) {
     const container = document.getElementById(`companions-container-${eventId}`);
     
-    // Limitar a mÃ¡ximo 1 acompaÃ±ante
+    // Limitar a máximo 1 acompañante
     const currentCompanions = container.querySelectorAll('.companion-card').length;
     if (currentCompanions >= 1) {
         alert('Solo puedes añadir 1 acompañante como máximo.');
@@ -304,7 +304,7 @@ function addCompanion(eventId) {
     
     companionCard.innerHTML = `
         <div class="companion-header">
-            <h5 class="companion-number">AcompaÃ±ante #${index}</h5>
+            <h5 class="companion-number">Acompañante #${index}</h5>
             <button type="button" class="remove-companion-btn" onclick="removeCompanion('${eventId}', ${index})">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.5 4.5L4.5 13.5M4.5 4.5L13.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -323,17 +323,17 @@ function addCompanion(eventId) {
             <label for="phone-${eventId}-${index}">Teléfono <span class="required">*</span></label>
             <div class="phone-input-group">
                 <select id="phone-prefix-${eventId}-${index}" name="phone-prefix-${index}" required data-person-index="${index}">
-                    <option value="+51" data-flag="ðŸ‡µðŸ‡ª">ðŸ‡µðŸ‡ª +51</option>
-                    <option value="+34" data-flag="ðŸ‡ªðŸ‡¸" selected>ðŸ‡ªðŸ‡¸ +34</option>
-                    <option value="+1" data-flag="ðŸ‡ºðŸ‡¸">ðŸ‡ºðŸ‡¸ +1</option>
-                    <option value="+44" data-flag="ðŸ‡¬ðŸ‡§">ðŸ‡¬ðŸ‡§ +44</option>
-                    <option value="+54" data-flag="ðŸ‡¦ðŸ‡·">ðŸ‡¦ðŸ‡· +54</option>
-                    <option value="+55" data-flag="ðŸ‡§ðŸ‡·">ðŸ‡§ðŸ‡· +55</option>
-                    <option value="+56" data-flag="ðŸ‡¨ðŸ‡±">ðŸ‡¨ðŸ‡± +56</option>
-                    <option value="+57" data-flag="ðŸ‡¨ðŸ‡´">ðŸ‡¨ðŸ‡´ +57</option>
-                    <option value="+52" data-flag="ðŸ‡²ðŸ‡½">ðŸ‡²ðŸ‡½ +52</option>
+                    <option value="+51" data-flag="🇵🇪">🇵🇪 +51</option>
+                    <option value="+34" data-flag="🇪🇸" selected>🇪🇸 +34</option>
+                    <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
+                    <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
+                    <option value="+54" data-flag="🇦🇷">🇦🇷 +54</option>
+                    <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
+                    <option value="+56" data-flag="🇨🇱">🇨🇱 +56</option>
+                    <option value="+57" data-flag="🇨🇴">🇨🇴 +57</option>
+                    <option value="+52" data-flag="🇲🇽">🇲🇽 +52</option>
                 </select>
-                <input type="tel" id="phone-${eventId}-${index}" name="phone-${index}" required placeholder="NÃºmero" data-person-index="${index}">
+                <input type="tel" id="phone-${eventId}-${index}" name="phone-${index}" required placeholder="Número" data-person-index="${index}">
             </div>
             <span class="error-message" id="error-phone-${eventId}-${index}"></span>
         </div>
@@ -346,13 +346,13 @@ function addCompanion(eventId) {
     
     container.appendChild(companionCard);
     
-    // Ocultar botÃ³n si se alcanza el lÃ­mite de 1 acompaÃ±ante
+    // Ocultar botón si se alcanza el límite de 1 acompañante
     const addButton = document.getElementById(`add-companion-${eventId}`);
     if (container.querySelectorAll('.companion-card').length >= 1) {
         if (addButton) addButton.style.display = 'none';
     }
     
-    // Scroll suave hasta el nuevo acompaÃ±ante
+    // Scroll suave hasta el nuevo acompañante
     setTimeout(() => {
         companionCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
@@ -383,7 +383,7 @@ function renumberCompanions(eventId) {
         const number = index + 1;
         const header = card.querySelector('.companion-number');
         if (header) {
-            header.textContent = `AcompaÃ±ante #${number}`;
+            header.textContent = `Acompañante #${number}`;
         }
     });
 }
@@ -541,11 +541,11 @@ function storeDaimielMainGuest(name) {
 }
 
 // ============================================
-// RECOPILACIÃ“N Y ENVÃO DE DATOS
+// RECOPILACIÓN Y ENVÍO DE DATOS
 // ============================================
 
 function collectFormData(form, eventId) {
-    // Recopilar todas las personas (principal + acompaÃ±antes)
+    // Recopilar todas las personas (principal + acompañantes)
     const persons = [];
     const personCards = form.querySelectorAll('.person-card');
     
@@ -698,7 +698,7 @@ async function handleFormSubmit(e, eventId) {
     // Limpiar errores
     showErrors({}, eventId);
     
-    // Deshabilitar botÃ³n
+    // Deshabilitar botón
     submitBtn.disabled = true;
     buttonText.style.display = 'none';
     buttonLoading.style.display = 'inline-flex';
@@ -726,13 +726,13 @@ async function handleFormSubmit(e, eventId) {
             body: JSON.stringify(payload)
         });
         
-        // Mostrar mensaje de Ã©xito
+        // Mostrar mensaje de éxito
         form.style.display = 'none';
         const successMsg = document.getElementById(`success-message-${eventId}`);
         successMsg.style.display = 'block';
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        // Configurar botones de acciÃ³n
+        // Configurar botones de acción
         const whatsappBtn = document.getElementById(`whatsapp-btn-${eventId}`);
         if (whatsappBtn) {
             whatsappBtn.href = CONFIG.WHATSAPP_COMMUNITY_URL;
@@ -765,7 +765,7 @@ async function handleFormSubmit(e, eventId) {
         console.error('Error al enviar:', error);
         alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
         
-        // Rehabilitar botÃ³n
+        // Rehabilitar botón
         submitBtn.disabled = false;
         buttonText.style.display = 'inline';
         buttonLoading.style.display = 'none';
